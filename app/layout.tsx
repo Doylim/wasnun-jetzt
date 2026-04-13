@@ -3,16 +3,14 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'WasNun.jetzt – Dein Sofort-Helfer bei Arbeitslosigkeit',
-  description:
-    'Du bist arbeitslos und weißt nicht was nun? In 3 Minuten weißt du was du legal dazuverdienen darfst – und wie du noch heute anfangen kannst.',
-  keywords: 'arbeitslos, bürgergeld rechner, ALG1 freibetrag, nebenverdienst, jobcenter',
+  description: 'In 3 Minuten weißt du was du legal dazuverdienen darfst. Kostenlos, klar, ohne Behörden-Stress.',
+  keywords: 'arbeitslos, bürgergeld rechner, ALG1 freibetrag, nebenverdienst',
   openGraph: {
-    title: 'WasNun.jetzt – Sofort-Helfer bei Arbeitslosigkeit',
-    description: 'Kostenloser Freibetrag-Rechner + persönlicher Sofort-Plan',
-    type: 'website',
-    locale: 'de_DE',
+    title: 'WasNun.jetzt',
+    description: 'Dein kostenloser Sofort-Helfer bei Arbeitslosigkeit',
+    type: 'website', locale: 'de_DE',
   },
-  robots: { index: false, follow: false }, // vor Go-Live auf true setzen
+  robots: { index: false, follow: false },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,60 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ── CSS-Variablen (Light + Dark) ── */
 :root {
-  --farbe-hintergrund: #faf8f4;
-  --farbe-text:        #0f1f3d;
-  --farbe-akzent:      #00b89f;
-  --farbe-karte:       #ffffff;
-  --schatten:          0 4px 24px rgba(15,31,61,0.10);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --farbe-hintergrund: #0f172a;
-    --farbe-text:        #f1f5f9;
-    --farbe-akzent:      #00d4b8;
-    --farbe-karte:       #1e293b;
-    --schatten:          0 4px 24px rgba(0,0,0,0.3);
-  }
+  --rot: #e01e1e;
+  --rot-dunkel: #b91c1c;
+  --schatten: 0 4px 32px rgba(0,0,0,0.07);
+  --schatten-lg: 0 12px 48px rgba(0,0,0,0.11);
 }
 
-html  { scroll-behavior: smooth; }
-body  {
-  background-color: var(--farbe-hintergrund);
-  color: var(--farbe-text);
-  font-family: 'DM Sans', sans-serif;
+html { scroll-behavior: smooth; }
+body {
+  background: #ffffff;
+  color: #0a0a0a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
 }
 
-/* ── Fluid Typography (Design-Skill 2026) ── */
-h1 { font-size: clamp(2rem, 5vw + 1rem, 4rem); }
-h2 { font-size: clamp(1.6rem, 3vw + 0.8rem, 3rem); }
-
-/* ── Range-Input ── */
 input[type='range'] {
   -webkit-appearance: none;
-  width: 100%;
-  height: 6px;
-  border-radius: 6px;
-  background: #e5e7eb;
-  outline: none;
-  cursor: pointer;
+  width: 100%; height: 4px;
+  border-radius: 4px; background: #e5e5e5;
+  outline: none; cursor: pointer;
 }
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  background: #00b89f;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,184,159,0.4);
-}
-input[type='range']::-moz-range-thumb {
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  background: #00b89f;
-  cursor: pointer;
-  border: none;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #e01e1e; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(224,30,30,0.3);
 }

@@ -1,55 +1,64 @@
 'use client'
-
 import { LEGAL } from '@/lib/data'
 
 export default function Hero() {
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-
   return (
-    <div className="flex flex-col items-center justify-center text-center px-6 py-20 flex-1 relative z-5">
-      <div className="inline-block mb-7 px-5 py-2 rounded-full border border-teal/30 bg-teal/15 text-teal-light text-xs font-semibold tracking-widest uppercase">
-        ✦ Dein Sofort-Helfer
-      </div>
+    <section className="bg-white pt-16 pb-20 px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
 
-      <h1 className="font-serif text-white leading-tight max-w-3xl mb-5">
-        Du bist arbeitslos.<br />
-        <em className="italic text-teal-light">Was jetzt?</em>
-      </h1>
+        {/* Disclaimer */}
+        <div className="mb-10 inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 px-4 py-2 rounded-full text-xs font-semibold">
+          ⚠️ Kostenloses Informationsangebot · Alle Angaben ohne Gewähr · Kein Ersatz für Rechtsberatung
+        </div>
 
-      <p className="text-white/70 text-base md:text-lg max-w-xl leading-relaxed mb-12 font-light">
-        In 3 Minuten weißt du, was du legal dazuverdienen darfst — und wie du
-        noch heute anfangen kannst. Klar. Sicher. Ohne Behörden-Stress.
-      </p>
-
-      <div className="flex gap-4 flex-wrap justify-center mb-16">
-        <button
-          onClick={() => scrollTo('rechner')}
-          className="bg-teal hover:bg-teal-light transition-all text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-teal/40 text-base"
-        >
-          → Freibetrag berechnen
-        </button>
-        <button
-          onClick={() => scrollTo('skills')}
-          className="border border-white/25 hover:border-white/60 text-white/80 hover:text-white transition-all px-7 py-4 rounded-full text-base"
-        >
-          Skills-Check starten
-        </button>
-      </div>
-
-      {/* Kennzahlen */}
-      <div className="flex gap-8 md:gap-14 flex-wrap justify-center">
-        {[
-          { zahl: '3 Mio.',                label: 'Registrierte Arbeitslose (März 2026)' },
-          { zahl: `${LEGAL.alg1.freibetrag} €`,   label: 'Freibetrag ALG I / Monat' },
-          { zahl: `${LEGAL.minijob.grenze} €`,    label: 'Minijob-Grenze 2026' },
-        ].map(s => (
-          <div key={s.zahl} className="text-center">
-            <span className="font-serif text-3xl text-teal-light block">{s.zahl}</span>
-            <span className="text-white/50 text-xs tracking-wide">{s.label}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left */}
+          <div>
+            <div className="inline-block bg-rot text-white text-xs font-bold px-3 py-1.5 rounded-full mb-6 tracking-widest uppercase">
+              ✦ Dein Sofort-Helfer
+            </div>
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 text-schwarz">
+              Du bist<br />
+              arbeitslos.<br />
+              <span className="text-rot italic">Was jetzt?</span>
+            </h1>
+            <p className="text-grau-mittel text-lg leading-relaxed mb-10 max-w-md font-light">
+              In 3 Minuten weißt du, was du <strong className="text-schwarz font-semibold">legal dazuverdienen</strong> darfst — und wie du noch heute anfangen kannst.
+            </p>
+            <div className="flex gap-3 flex-wrap">
+              <a
+                href="#rechner"
+                className="bg-rot hover:bg-rot-dunkel text-white font-bold px-8 py-4 rounded-full transition-all shadow-lg shadow-rot/20 text-base"
+              >
+                → Freibetrag berechnen
+              </a>
+              <a
+                href="#skills"
+                className="border-2 border-schwarz hover:bg-schwarz hover:text-white text-schwarz font-bold px-8 py-4 rounded-full transition-all text-base"
+              >
+                Skills-Check
+              </a>
+            </div>
           </div>
-        ))}
+
+          {/* Right — Stat Cards */}
+          <div className="grid grid-cols-1 gap-4">
+            {[
+              { zahl: '3 Mio.', label: 'Registrierte Arbeitslose in Deutschland', icon: '👥', bg: 'bg-grau-hell' },
+              { zahl: `${LEGAL.alg1.freibetrag} €`, label: 'Freibetrag ALG I pro Monat — anrechnungsfrei', icon: '💶', bg: 'bg-rot-hell' },
+              { zahl: `${LEGAL.minijob.grenze} €`, label: 'Minijob-Grenze 2026 — legal dazuverdienen', icon: '✅', bg: 'bg-grau-hell' },
+            ].map(s => (
+              <div key={s.zahl} className={`${s.bg} rounded-2xl p-6 flex items-center gap-5 shadow-sm`}>
+                <div className="text-4xl">{s.icon}</div>
+                <div>
+                  <div className="font-display text-3xl font-black text-schwarz">{s.zahl}</div>
+                  <div className="text-grau-mittel text-sm mt-0.5">{s.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
