@@ -1,32 +1,38 @@
-// ─────────────────────────────────────────────
-// lib/data.ts – Inhalte & Rechtskonstanten
+// ─────────────────────────────────────────────────────────
+// lib/data.ts – Alle Inhalte & Rechtskonstanten
 // Bei Gesetzesänderungen NUR HIER anpassen!
-// ─────────────────────────────────────────────
+// Stand: Januar 2026
+// ─────────────────────────────────────────────────────────
 
 export const LEGAL = {
   alg1: {
-    freibetrag:   165,       // § 155 SGB III
-    maxStunden:   14,        // < 15 h/Woche = arbeitslos
+    freibetrag:   165,
+    maxStunden:   14,
     hotline:      '0800 4 5555 00',
     portal:       'arbeitsagentur.de',
     stand:        'Januar 2026',
   },
   buergergeld: {
-    grundfreibetrag: 100,   // § 11b SGB II
+    grundfreibetrag: 100,
     staffel1Max:     520,
     staffel1Rate:    0.20,
     staffel2Max:     1000,
     staffel2Rate:    0.30,
     portal:          'jobcenter.digital',
     stand:           'Januar 2026',
+    regelsatz:       563,
   },
   minijob: {
-    grenze:      603,        // ab 01.01.2026
-    mindestlohn: 13.90,      // ab 01.01.2026
+    grenze:      603,
+    mindestlohn: 13.90,
+  },
+  pauschalen: {
+    uebungsleiter:    { jahr: 3300, monat: 275, paragraph: '§ 3 Nr. 26 EStG' },
+    ehrenamt:         { jahr: 960,  monat: 80,  paragraph: '§ 3 Nr. 26a EStG' },
+    kombiniert:       { jahr: 4260, monat: 355 },
   },
 }
 
-// ── Impressum-Daten ──
 export const IMPRESSUM = {
   name:    'Norbert Sommer',
   firma:   'Einzelunternehmen',
@@ -38,100 +44,291 @@ export const IMPRESSUM = {
   ust:     'DE320652316',
 }
 
-// ── Skill-Optionen für den 5-Fragen-Check ──
+// ── Verdienst-Kategorien (das Herzstück des Portals) ──
+export type Kategorie = {
+  id:          string
+  label:       string
+  sublabel:    string
+  max:         string
+  timing:      string
+  beschreibung: string
+  rechtsbasis: string
+  tipp:        string
+  qualifikation?: Qualifikation
+  optionen:    Option[]
+}
+
+export type Option = {
+  titel:       string
+  verdienst:   string
+  timing:      string
+  beschreibung: string
+  link?:       string
+  warnung?:    string
+}
+
+export type Qualifikation = {
+  name:        string
+  dauer:       string
+  kosten:      string
+  foerderung:  string
+  link:        string
+}
+
+export const KATEGORIEN: Kategorie[] = [
+  {
+    id:       'sofort',
+    label:    'Sofort',
+    sublabel: 'Heute noch loslegen',
+    max:      'bis 603 €/Monat',
+    timing:   'In 24–48 Stunden',
+    beschreibung: 'Optionen bei denen du innerhalb von 24–48 Stunden dein erstes Geld verdienen kannst. Kein Vorwissen, keine langen Bewerbungsprozesse.',
+    rechtsbasis: 'Minijob-Grenze 603 €/Monat · ALG I Freibetrag 165 € · 15h/Woche max.',
+    tipp: 'Beim ALG I gilt: Das Nettoeinkommen über 165 € wird angerechnet. Trotzdem lohnt es sich — jeder Euro über dem Freibetrag bleibt dir zur Hälfte.',
+    optionen: [
+      {
+        titel: 'Kurzfristige Schichten',
+        verdienst: '13,90–20 €/Std.',
+        timing: '24–48h',
+        beschreibung: 'Zenjob, Coople, InStaff — Gastro, Event, Lager. Anmeldung in Minuten, erster Einsatz oft am nächsten Tag.',
+      },
+      {
+        titel: 'Mikrojobs per App',
+        verdienst: '50–200 €/Monat',
+        timing: 'Heute',
+        beschreibung: 'Clickworker, AppJobber, Streetspotr — kleine Aufgaben am Smartphone. Realistisch: Nebenverdienst, keine Haupteinnahme.',
+        warnung: 'Manche Anbieter werben mit unrealistischen Summen. Seriöse Plattformen zahlen 5–15 €/Stunde.',
+      },
+      {
+        titel: 'Liefer- & Fahrdienste',
+        verdienst: '300–600 €/Monat',
+        timing: '2–3 Tage',
+        beschreibung: 'Lieferando, Uber Eats, Bolt — Führerschein und Fahrzeug nötig. Flexibel einteilbar, körperlich anspruchsvoll.',
+      },
+      {
+        titel: 'Lokale Kleinaufträge',
+        verdienst: '15–50 €/Auftrag',
+        timing: '2–5 Tage',
+        beschreibung: 'MyHammer, Kleinanzeigen — Handwerk, Umzug, Garten. Als Selbstständiger andere Freibetrag-Regeln beachten!',
+        warnung: 'Als Selbstständiger: Gewerbeanmeldung + Einnahmen korrekt melden!',
+      },
+    ],
+  },
+  {
+    id:       'clever',
+    label:    'Clever',
+    sublabel: 'Die unterschätzten Freibeträge',
+    max:      'bis 4.260 €/Jahr steuerfrei',
+    timing:   'Dauerhaft & legal',
+    beschreibung: 'Freibeträge die kaum jemand kennt — aber vollständig legal sind. Besonders wertvoll: Sie gelten zusätzlich zum normalen Freibetrag.',
+    rechtsbasis: '§ 3 Nr. 26 EStG (Übungsleiter) · § 3 Nr. 26a EStG (Ehrenamt) · § 155 SGB III',
+    tipp: 'Übungsleiter- und Ehrenamtspauschale können KOMBINIERT werden — für verschiedene Tätigkeiten beim selben Verein. Trainer + Kassenwart = 4.260 €/Jahr!',
+    optionen: [
+      {
+        titel: 'Übungsleiterpauschale',
+        verdienst: '275 €/Monat (3.300 €/Jahr)',
+        timing: 'Dauerhaft',
+        beschreibung: 'Als Trainer, Chorleiter, Betreuer, Ausbilder oder Referent bei einem gemeinnützigen Verein oder öffentlicher Einrichtung. Vollständig anrechnungsfrei — auch bei ALG I!',
+      },
+      {
+        titel: 'Ehrenamtspauschale',
+        verdienst: '80 €/Monat (960 €/Jahr)',
+        timing: 'Dauerhaft',
+        beschreibung: 'Als Vereinsvorstand, Kassenwart, Platzwart oder für andere organisatorische Aufgaben in gemeinnützigen Vereinen. Breiter anwendbar als die Übungsleiterpauschale.',
+      },
+      {
+        titel: 'Mieteinnahmen (ALG I)',
+        verdienst: 'Unbegrenzt',
+        timing: 'Sofort',
+        beschreibung: 'Mieteinnahmen werden beim ALG I NICHT angerechnet! Wer ein Zimmer untervermietet oder eine Wohnung besitzt, kann unbegrenzt dazuverdienen.',
+        warnung: 'Nur bei ALG I! Beim Bürgergeld gelten andere Regeln.',
+      },
+      {
+        titel: 'Zinsen & Kapitalerträge (ALG I)',
+        verdienst: 'Unbegrenzt',
+        timing: 'Sofort',
+        beschreibung: 'Zinsen, Dividenden und andere Kapitalerträge werden beim ALG I nicht angerechnet. Beim Bürgergeld wird Vermögen oberhalb des Schonvermögens berücksichtigt.',
+        warnung: 'Nur bei ALG I! Beim Bürgergeld gelten Vermögensgrenzen.',
+      },
+    ],
+  },
+  {
+    id:       'aufbauen',
+    label:    'Aufbauen',
+    sublabel: 'Mit Qualifikation mehr verdienen',
+    max:      'bis 800 €/Monat',
+    timing:   '4–16 Wochen',
+    beschreibung: 'Mit einem Bildungsgutschein der Bundesagentur für Arbeit kannst du Qualifikationen kostenlos erwerben — und danach deutlich mehr verdienen.',
+    rechtsbasis: '§ 81 SGB III (Bildungsgutschein) · AZAV-Zertifizierung',
+    tipp: 'Der Bildungsgutschein ist kostenlos und deckt Lehrgang + Prüfungsgebühren ab. Einfach bei der Agentur für Arbeit anfragen — viele wissen nicht, dass sie Anspruch haben!',
+    qualifikation: {
+      name:       'Bildungsgutschein beantragen',
+      dauer:      'Beratungsgespräch ~1 Stunde',
+      kosten:     'Kostenlos',
+      foerderung: '100% über Bundesagentur für Arbeit',
+      link:       'https://www.arbeitsagentur.de/bildungsgutschein',
+    },
+    optionen: [
+      {
+        titel: 'C-Trainer Breitensport',
+        verdienst: '275 €/Monat steuerfrei (Übungsleiterpauschale)',
+        timing: '16 Wochen online',
+        beschreibung: 'Die ideale Kombination: Lizenz holen → im Sportverein trainieren → 275 €/Monat komplett steuerfrei über die Übungsleiterpauschale. Mit Bildungsgutschein komplett kostenlos!',
+        link: 'https://www.academyofsports.de/de/trainer-ausbildung/trainer-c-lizenz-breitensport/',
+      },
+      {
+        titel: 'Ersthelfer / Erste-Hilfe-Trainer',
+        verdienst: '20–50 €/Kurs als Kursleiter',
+        timing: '2–3 Tage',
+        beschreibung: 'Als zertifizierter Erste-Hilfe-Trainer Kurse geben — für Schulen, Betriebe, Vereine. Kurse werden regelmäßig nachgefragt.',
+      },
+      {
+        titel: 'Gabelstapler-Schein',
+        verdienst: '15–20 €/Std. in Logistik',
+        timing: '1 Woche',
+        beschreibung: 'DGUV V3-Schein öffnet Türen in Lager und Logistik. Oft mit Bildungsgutschein förderbar. Sehr hohe Nachfrage bei Zeitarbeit.',
+      },
+      {
+        titel: 'Online-Kurs: Freelancing',
+        verdienst: '200–800 €/Monat',
+        timing: '4–8 Wochen',
+        beschreibung: 'Texten, Grafikdesign, Social Media, virtuelle Assistenz — alles was du online anbieten kannst. Fiverr, Upwork, direkte Kundenakquise.',
+      },
+    ],
+  },
+  {
+    id:       'digital',
+    label:    'Digital',
+    sublabel: 'Von zuhause aus',
+    max:      'bis 500 €/Monat',
+    timing: 'Sofort bis 4 Wochen',
+    beschreibung: 'Für alle die mobil eingeschränkt sind oder lieber von zuhause arbeiten. Laptop und Internet reichen.',
+    rechtsbasis: 'ALG I: 165 € Freibetrag · Bürgergeld: gestaffelte Freibeträge',
+    tipp: 'Online-Umfragen und Mikrojobs sind ein guter Einstieg — aber keine Haupteinnahmequelle. Freelancing hat deutlich höheres Potenzial.',
+    optionen: [
+      {
+        titel: 'Online-Umfragen',
+        verdienst: '20–60 €/Monat',
+        timing: 'Sofort',
+        beschreibung: 'Meinungsstudie, Swagbucks, GFK — geringer Aufwand, geringer Verdienst. Gut als Ergänzung, nur bei seriösen Anbietern!',
+        warnung: 'Vorsicht vor Scam-Portalen. Nie Gebühren zahlen um teilzunehmen!',
+      },
+      {
+        titel: 'KI-Training / Datenlabeling',
+        verdienst: '100–300 €/Monat',
+        timing: 'Sofort',
+        beschreibung: 'Scale AI, Appen, Remotasks — KI-Systeme mit Daten trainieren. Wachsende Nachfrage, flexibel einteilbar.',
+      },
+      {
+        titel: 'Virtuelle Assistenz',
+        verdienst: '15–25 €/Std.',
+        timing: '1–2 Wochen',
+        beschreibung: 'E-Mail-Management, Terminkoordination, Recherche für Unternehmen. Ideal für Büro-Erfahrene. Über Upwork oder direkte Akquise.',
+      },
+      {
+        titel: 'Content Creation',
+        verdienst: '0–500 €/Monat',
+        timing: '4–12 Wochen',
+        beschreibung: 'TikTok, Instagram, YouTube — langsamer Aufbau, aber skalierbar. Ehrlich: Die ersten Monate oft ohne Einnahmen.',
+        warnung: 'Nicht als Soforteinkommen planen. Eher als langfristige Perspektive.',
+      },
+    ],
+  },
+]
+
+// ── Skills-Check Optionen ──
 export const SKILL_OPTIONS = {
   beruf: [
-    { value: 'handwerk', label: 'Handwerk / Technik',      emoji: '🔧', sub: 'Montage, Reparatur, Bauwesen' },
-    { value: 'buero',    label: 'Büro / Verwaltung',       emoji: '💼', sub: 'Sachbearbeitung, Assistenz' },
-    { value: 'digital',  label: 'Digital / IT',            emoji: '💻', sub: 'Programmierung, Design, Marketing' },
-    { value: 'pflege',   label: 'Pflege / Soziales',       emoji: '❤️', sub: 'Betreuung, Erziehung, Gesundheit' },
-    { value: 'logistik', label: 'Logistik / Fahrerei',     emoji: '🚚', sub: 'Transport, Lager, Kurierdienst' },
-    { value: 'service',  label: 'Gastronomie / Service',   emoji: '🍽️', sub: 'Küche, Kellner, Hotel' },
+    { value: 'handwerk', label: 'Handwerk / Technik',    sub: '🔧 Montage, Reparatur, Bauwesen' },
+    { value: 'buero',    label: 'Büro / Verwaltung',     sub: '💼 Sachbearbeitung, Assistenz' },
+    { value: 'digital',  label: 'Digital / IT',          sub: '💻 Programmierung, Design, Marketing' },
+    { value: 'pflege',   label: 'Pflege / Soziales',     sub: '❤️ Betreuung, Erziehung, Gesundheit' },
+    { value: 'logistik', label: 'Logistik / Transport',  sub: '🚚 Lager, Fahrerei, Kurierdienst' },
+    { value: 'sport',    label: 'Sport / Pädagogik',     sub: '⚽ Training, Bildung, Betreuung' },
   ],
   zeit: [
-    { value: 'wenig',    label: 'Wenig Zeit',   emoji: '⏰', sub: '1–5 Stunden / Woche' },
-    { value: 'mittel',   label: 'Etwas Zeit',   emoji: '🕐', sub: '6–14 Stunden / Woche (ALG-I-Grenze!)' },
-    { value: 'viel',     label: 'Viel Zeit',    emoji: '📅', sub: 'Bürgergeld – keine 15h-Grenze' },
-    { value: 'flexibel', label: 'Flexibel',     emoji: '🔄', sub: 'Je nach Woche unterschiedlich' },
+    { value: 'wenig',    label: 'Sehr wenig',   sub: '1–5 Stunden / Woche' },
+    { value: 'mittel',   label: 'Etwas Zeit',   sub: '6–14 Stunden / Woche (ALG-I-Grenze!)' },
+    { value: 'viel',     label: 'Viel Zeit',    sub: 'Bürgergeld-Bezug, keine 15h-Grenze' },
+    { value: 'flexibel', label: 'Flexibel',     sub: 'Je nach Woche unterschiedlich' },
   ],
   mobilitaet: [
-    { value: 'auto',           label: 'Auto & Führerschein',       emoji: '🚗', sub: 'Ich bin mobil' },
-    { value: 'nah',            label: 'Nahverkehr / Fahrrad',      emoji: '🚌', sub: 'Regional unterwegs' },
-    { value: 'zuhause',        label: 'Hauptsächlich zuhause',     emoji: '🏠', sub: 'Laptop & Internet vorhanden' },
-    { value: 'eingeschraenkt', label: 'Eingeschränkte Mobilität',  emoji: '♿', sub: 'Auf digitale Jobs angewiesen' },
+    { value: 'auto',      label: 'Auto & Führerschein',    sub: 'Bin mobil unterwegs' },
+    { value: 'nah',       label: 'Nahverkehr / Fahrrad',   sub: 'Regional unterwegs' },
+    { value: 'zuhause',   label: 'Hauptsächlich zuhause',  sub: 'Laptop & Internet vorhanden' },
+    { value: 'begrenzt',  label: 'Eingeschränkt',          sub: 'Auf digitale Jobs angewiesen' },
   ],
   digital: [
-    { value: 'profi',  label: 'Sehr fit',          emoji: '🧠', sub: 'Office, E-Mail, Social Media kein Problem' },
-    { value: 'mittel', label: 'Smartphone-Nutzer', emoji: '📱', sub: 'Apps ja, aber kein PC-Profi' },
-    { value: 'wenig',  label: 'Wenig digital',     emoji: '🖨️', sub: 'Lieber offline arbeiten' },
-  ],
-  ziel: [
-    { value: 'sofort',  label: 'Sofort anfangen',         emoji: '⚡', sub: 'Ich will heute noch loslegen' },
-    { value: 'sicher',  label: 'Sicherheit & Compliance', emoji: '🛡️', sub: 'Kein Risiko mit dem Jobcenter' },
-    { value: 'zukunft', label: 'Perspektive aufbauen',    emoji: '📈', sub: 'Langfristig was aufbauen' },
-    { value: 'lokal',   label: 'Lokale Jobs',             emoji: '📍', sub: 'In meiner Region arbeiten' },
+    { value: 'profi',    label: 'Sehr fit',           sub: 'Office, E-Mail, Social Media kein Problem' },
+    { value: 'mittel',   label: 'Smartphone-Nutzer',  sub: 'Apps ja, PC weniger' },
+    { value: 'wenig',    label: 'Lieber offline',     sub: 'Bevorzuge persönlichen Kontakt' },
   ],
 }
 
-// ── Plan-Karten (Ergebnis des Skills-Checks) ──
 export type PlanKarte = {
-  icon:       string
-  bg:         string
-  titel:      string
-  verdienst:  string
+  kategorie:   string
+  titel:       string
+  verdienst:   string
+  timing:      string
   beschreibung: string
-  startLabel: string
-  startFarbe: string
-  tags:       string[]
+  rechtsBasis: string
+  warnung?:    string
+  tags:        string[]
 }
 
 export const PLAN_KARTEN: PlanKarte[] = [
   {
-    icon: '⚡', bg: 'bg-emerald-50 dark:bg-emerald-950',
-    titel: 'Mikrojobs über Apps',
-    verdienst: '50–200 €/Monat',
-    beschreibung: 'Clickworker, AppJobber oder Streetspotr – kleine Aufgaben am Smartphone, sofort startbereit. Realistische Erwartung: kein großes Geld, aber schneller Einstieg ohne lange Bewerbung.',
-    startLabel: '⏱ Heute startbar', startFarbe: 'text-emerald-700 bg-emerald-50',
-    tags: ['digital', 'buero', 'wenig', 'mittel', 'zuhause', 'eingeschraenkt'],
-  },
-  {
-    icon: '🚀', bg: 'bg-blue-50 dark:bg-blue-950',
+    kategorie: 'SOFORT',
     titel: 'Kurzfristige Schichten',
     verdienst: '13,90–20 €/Std.',
-    beschreibung: 'Zenjob, Coople oder InStaff vermitteln Gastro-, Event- und Lagerschichten – Einsatz oft in 24–48 Stunden möglich. Gut für mobile Nutzer mit Gastro- oder Lager-Erfahrung.',
-    startLabel: '⏱ In 1–2 Tagen', startFarbe: 'text-blue-700 bg-blue-50',
-    tags: ['auto', 'nah', 'service', 'logistik', 'sofort'],
+    timing: 'In 24–48 Stunden',
+    beschreibung: 'Zenjob, Coople, InStaff — Gastro, Event, Lager. Anmeldung dauert Minuten.',
+    rechtsBasis: 'Minijob bis 603 €/Monat · ALG I: 165 € Freibetrag',
+    tags: ['logistik', 'auto', 'nah', 'mittel', 'viel'],
   },
   {
-    icon: '🔧', bg: 'bg-amber-50 dark:bg-amber-950',
-    titel: 'Lokale Kleinaufträge',
-    verdienst: '15–40 €/Auftrag',
-    beschreibung: 'MyHammer oder Kleinanzeigen für Handwerker, Umzugshilfe, Gartenpflege. Als Selbstständiger gelten andere Freibetrag-Regeln – vorher Gewerbe prüfen!',
-    startLabel: '📋 Gewerbe prüfen', startFarbe: 'text-amber-700 bg-amber-50',
-    tags: ['handwerk', 'auto', 'lokal', 'nah'],
+    kategorie: 'CLEVER',
+    titel: 'Übungsleiterpauschale nutzen',
+    verdienst: '275 €/Monat steuerfrei',
+    timing: 'Dauerhaft & legal',
+    beschreibung: 'Als Trainer, Chorleiter oder Betreuer im Verein — komplett anrechnungsfrei, auch bei ALG I. Der unterschätzteste Freibetrag Deutschlands.',
+    rechtsBasis: '§ 3 Nr. 26 EStG · § 155 SGB III · anrechnungsfrei ALG I',
+    tags: ['sport', 'pflege', 'buero', 'wenig', 'zuhause', 'begrenzt'],
   },
   {
-    icon: '💻', bg: 'bg-purple-50 dark:bg-purple-950',
-    titel: 'Freelancing / Remote',
-    verdienst: '200–800 €/Monat',
-    beschreibung: 'Fiverr, Upwork oder direkte Kunden – für digitale Skills wie Texten, Design, Social Media. Höheres Potenzial, aber 2–4 Wochen Aufbauzeit einplanen.',
-    startLabel: '📈 Aufbau: 2–4 Wochen', startFarbe: 'text-purple-700 bg-purple-50',
-    tags: ['digital', 'buero', 'zukunft', 'zuhause', 'profi'],
+    kategorie: 'AUFBAUEN',
+    titel: 'C-Trainer Lizenz (kostenlos)',
+    verdienst: '275 €/Monat dauerhaft',
+    timing: '16 Wochen online',
+    beschreibung: 'Mit Bildungsgutschein komplett kostenlos. Danach: Übungsleiterpauschale = 275 €/Monat steuerfrei. Der clevere Weg.',
+    rechtsBasis: '§ 81 SGB III Bildungsgutschein · AZAV-zertifiziert',
+    tags: ['sport', 'pflege', 'viel', 'mittel', 'flexibel'],
   },
   {
-    icon: '🚗', bg: 'bg-orange-50 dark:bg-orange-950',
+    kategorie: 'DIGITAL',
+    titel: 'KI-Training / Datenlabeling',
+    verdienst: '100–300 €/Monat',
+    timing: 'Sofort',
+    beschreibung: 'Scale AI, Appen, Remotasks — Wachsende Nachfrage. Flexible Zeiteinteilung von zuhause.',
+    rechtsBasis: 'Minijob oder Selbstständigkeit · ALG I: 165 € Freibetrag',
+    tags: ['digital', 'buero', 'zuhause', 'begrenzt', 'wenig'],
+  },
+  {
+    kategorie: 'SOFORT',
     titel: 'Liefer- & Fahrdienste',
     verdienst: '300–600 €/Monat',
-    beschreibung: 'Lieferando, Uber Eats oder Bolt – Führerschein und Fahrzeug vorausgesetzt. Flexibel einteilbar, aber körperlich anspruchsvoll. Km-Abrechnung beachten.',
-    startLabel: '⏱ In 2–3 Tagen', startFarbe: 'text-orange-700 bg-orange-50',
-    tags: ['auto', 'logistik', 'sofort', 'viel'],
+    timing: 'In 2–3 Tagen',
+    beschreibung: 'Lieferando, Uber Eats, Bolt — Führerschein nötig. Sehr flexibel einteilbar.',
+    rechtsBasis: 'Minijob bis 603 €/Monat · Selbstständigkeit möglich',
+    tags: ['auto', 'logistik', 'viel', 'mittel'],
   },
   {
-    icon: '📝', bg: 'bg-gray-50 dark:bg-gray-900',
-    titel: 'Online-Umfragen',
-    verdienst: '20–80 €/Monat',
-    beschreibung: 'Meinungsstudie oder Swagbucks – geringer Aufwand, aber auch geringer Verdienst. Gut als Ergänzung, nicht als Hauptquelle. Nur seriöse Anbieter nutzen!',
-    startLabel: '⏱ Sofort', startFarbe: 'text-gray-600 bg-gray-100',
-    tags: ['wenig', 'zuhause', 'eingeschraenkt', 'mittel'],
+    kategorie: 'DIGITAL',
+    titel: 'Virtuelle Assistenz',
+    verdienst: '15–25 €/Std.',
+    timing: '1–2 Wochen',
+    beschreibung: 'E-Mail, Termine, Recherche für Unternehmen. Ideal für Büro-Erfahrene. Über Upwork oder direkte Akquise.',
+    rechtsBasis: 'Freiberuflich oder Minijob · ALG I: 165 € Freibetrag',
+    tags: ['buero', 'digital', 'zuhause', 'profi'],
   },
 ]
