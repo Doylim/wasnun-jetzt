@@ -4,17 +4,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        rot:        '#e01e1e',
+        rot:          '#e01e1e',
         'rot-dunkel': '#b91c1c',
-        'rot-hell': '#fef2f2',
-        schwarz:    '#0a0a0a',
-        'grau-dunkel': '#1a1a1a',
-        'grau-mittel': '#6b6b6b',
-        'grau-hell': '#f5f5f5',
+        'rot-hell':   '#fff0f0',
+        schwarz:      '#0a0a0a',
+        'grau-hell':  '#f5f5f5',
+        'grau-mid':   '#888888',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
-        sans:    ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans:        ['Barlow', 'sans-serif'],
+        condensed:   ['"Barlow Condensed"', 'sans-serif'],
+      },
+      fontSize: {
+        'huge':  ['clamp(3.5rem, 12vw, 9rem)', { lineHeight: '0.95' }],
+        'big':   ['clamp(2rem, 6vw, 5rem)',    { lineHeight: '1.05' }],
       },
     },
   },
