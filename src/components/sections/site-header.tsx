@@ -10,9 +10,9 @@ export function SiteHeader() {
   const [offen, setOffen] = useState(false);
 
   const links = [
-    { href: "#rechner", label: "Rechner" },
-    { href: "#entscheiden", label: "Verdienst-Finder" },
-    { href: "#faq", label: "FAQ" },
+    { href: "/#rechner", label: "Dein Plan" },
+    { href: "/#faq", label: "FAQ" },
+    { href: "/buergergeld", label: "Bürgergeld" },
   ];
 
   return (
@@ -29,16 +29,16 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Hauptnavigation">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               className="text-sm font-semibold text-navy-600 transition-colors hover:text-teal-600"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <Button variant="primary" size="sm" asChild>
-            <a href="#rechner">In 60 Sek. rechnen</a>
+            <a href="/#rechner">In 60 Sek. rechnen</a>
           </Button>
         </nav>
 
@@ -60,17 +60,17 @@ export function SiteHeader() {
       >
         <div className="flex flex-col gap-1 p-4">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               onClick={() => setOffen(false)}
               className="rounded-lg px-4 py-3 text-base font-semibold text-navy-800 hover:bg-navy-50"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <Button variant="primary" className="mt-2" asChild>
-            <a href="#rechner" onClick={() => setOffen(false)}>
+            <a href="/#rechner" onClick={() => setOffen(false)}>
               In 60 Sek. rechnen
             </a>
           </Button>
