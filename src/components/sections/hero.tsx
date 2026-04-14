@@ -14,14 +14,14 @@ export function Hero() {
       <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-navy-200/30 blur-3xl" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+          <div className="min-w-0 lg:col-span-7">
             <Badge variant="success" className="mb-6 gap-2">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-teal-500" />
               Aktualisiert für April 2026 · Nur ALG I
             </Badge>
 
-            <h1 className="mb-6 text-balance text-4xl font-black leading-[1.05] tracking-tight text-navy-900 md:text-6xl lg:text-7xl">
+            <h1 className="mb-6 text-balance text-3xl font-black leading-[1.1] tracking-tight text-navy-900 [hyphens:auto] sm:text-4xl md:text-6xl lg:text-7xl">
               Du beziehst ALG I. Bis zu{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 text-teal-600">520 EUR</span>
@@ -54,13 +54,23 @@ export function Hero() {
             </div>
 
             <div className="mb-10 flex flex-col gap-3 sm:flex-row">
-              <Button variant="primary" size="xl" asChild>
+              <Button
+                variant="primary"
+                size="xl"
+                className="w-full px-6 text-base sm:w-auto sm:px-10 sm:text-lg"
+                asChild
+              >
                 <a href="#rechner">
-                  In 60 Sek. deinen Plan erstellen
-                  <ArrowRight className="h-5 w-5" />
+                  Jetzt Plan erstellen
+                  <ArrowRight className="h-5 w-5 shrink-0" />
                 </a>
               </Button>
-              <Button variant="outline" size="xl" asChild>
+              <Button
+                variant="outline"
+                size="xl"
+                className="w-full px-6 text-base sm:w-auto sm:px-10 sm:text-lg"
+                asChild
+              >
                 <a href="#faq">Häufige Fragen</a>
               </Button>
             </div>
@@ -81,7 +91,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-5">
             <div className="relative mx-auto max-w-md">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-teal-400/40 to-navy-400/20 blur-2xl" />
               <div className="relative rounded-3xl border border-navy-100 bg-white p-8 shadow-2xl shadow-navy-900/10">

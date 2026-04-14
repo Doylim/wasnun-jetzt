@@ -37,7 +37,7 @@ export function Trust() {
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {PUNKTE.map((p) => {
             const Icon = p.icon;
             return (

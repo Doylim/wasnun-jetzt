@@ -5,7 +5,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-navy-100 bg-navy-900 py-16 text-white">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div>
             <Link href="/" className="mb-4 flex items-center gap-2 font-bold">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10">
