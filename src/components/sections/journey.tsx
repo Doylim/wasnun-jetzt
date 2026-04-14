@@ -54,50 +54,50 @@ export function Journey() {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_22rem]">
-          <div className="space-y-6">
-            <JourneyWarnung stunden={stunden} />
-            <JourneyInput
-              algI={algI}
-              stunden={stunden}
-              onAlgIChange={setAlgI}
-              onStundenChange={setStunden}
-            />
+        <div className="mx-auto max-w-4xl space-y-6">
+          <JourneyWarnung stunden={stunden} />
+          <JourneyInput
+            algI={algI}
+            stunden={stunden}
+            onAlgIChange={setAlgI}
+            onStundenChange={setStunden}
+          />
 
-            <div className="md:hidden">
-              <JourneyTotal algI={algI} plan={plan} />
-            </div>
+          <JourneyTotal algI={algI} plan={plan} />
+        </div>
 
-            <div>
-              <Badge variant="teal" className="mb-4">
-                Schritt 2 von 3
-              </Badge>
-              <h3 className="mb-2 text-2xl font-black text-navy-900 md:text-3xl">
-                Welche Pauschalen passen zu dir?
-              </h3>
-              <p className="text-sm text-navy-600">
-                Die 165 EUR Grundfreibetrag bekommst du immer. Aktiviere, was
-                zusätzlich auf dich zutrifft – dein Plan aktualisiert sich live.
-              </p>
-            </div>
+        <div className="mx-auto mt-16 max-w-6xl">
+          <div className="mb-8 text-center">
+            <Badge variant="teal" className="mb-4">
+              Schritt 2 von 3
+            </Badge>
+            <h3 className="mb-2 text-balance text-2xl font-black text-navy-900 md:text-4xl">
+              Welche Pauschalen passen zu dir?
+            </h3>
+            <p className="mx-auto max-w-2xl text-balance text-sm text-navy-600 md:text-base">
+              Die 165 EUR Grundfreibetrag bekommst du immer. Aktiviere, was
+              zusätzlich auf dich zutrifft – dein Plan aktualisiert sich live.
+            </p>
+          </div>
 
-            <div className="grid gap-5 md:grid-cols-2">
-              {JOURNEY_KARTEN.map((karte) => (
+          <div className="grid items-start gap-5 md:grid-cols-2">
+            {JOURNEY_KARTEN.map((karte) => (
+              <div
+                key={karte.id}
+                className={karte.id === "passiv" ? "md:col-span-2" : undefined}
+              >
                 <JourneyCard
-                  key={karte.id}
                   karte={karte}
                   aktiv={aktivKarten.has(karte.id)}
                   onToggle={() => toggleKarte(karte.id)}
                 />
-              ))}
-            </div>
-
-            <JourneySummary algI={algI} plan={plan} aktivKarten={aktivKarten} />
+              </div>
+            ))}
           </div>
+        </div>
 
-          <aside className="hidden lg:block">
-            <JourneyTotal algI={algI} plan={plan} />
-          </aside>
+        <div className="mx-auto mt-16 max-w-4xl">
+          <JourneySummary algI={algI} plan={plan} aktivKarten={aktivKarten} />
         </div>
       </div>
     </section>

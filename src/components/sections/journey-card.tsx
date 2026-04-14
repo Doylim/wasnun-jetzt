@@ -24,7 +24,7 @@ function PartnerLink({ partner }: { partner: Partner }) {
         <div className="text-sm font-bold text-navy-900 group-hover:text-teal-700">
           {partner.name}
         </div>
-        <div className="truncate text-xs text-navy-500">
+        <div className="text-xs leading-snug text-navy-500">
           {partner.beschreibung}
         </div>
         <div className="mt-0.5 text-xs font-bold text-teal-600">
@@ -157,7 +157,7 @@ export function JourneyCard({ karte, aktiv, onToggle }: Props) {
         )}
 
         {karte.unterabschnitte && karte.unterabschnitte.length > 0 && (
-          <div className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2">
             {karte.unterabschnitte.map((abschnitt) => {
               const abPartner = partnerNachIds(abschnitt.partnerIds);
               return (
