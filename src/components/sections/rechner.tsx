@@ -108,7 +108,7 @@ export function Rechner() {
             Was darfst du behalten?
           </h2>
           <p className="mx-auto max-w-2xl text-balance text-lg text-navy-600">
-            Waehle deine Leistung, trage dein Einkommen ein – du siehst sofort,
+            Wähle deine Leistung, trage dein Einkommen ein – du siehst sofort,
             wie viel du legal dazuverdienen darfst.
           </p>
         </div>
@@ -118,7 +118,7 @@ export function Rechner() {
             <div className="flex justify-center">
               <TabsList>
                 <TabsTrigger value="alg1">ALG I</TabsTrigger>
-                <TabsTrigger value="bg">Buergergeld</TabsTrigger>
+                <TabsTrigger value="bg">Bürgergeld</TabsTrigger>
               </TabsList>
             </div>
 
@@ -183,13 +183,13 @@ export function Rechner() {
 
                   <div>
                     <div className="mb-3 text-sm font-bold text-navy-800">
-                      Zusaetzliche Pauschalen (steuerfrei, komplett anrechnungsfrei)
+                      Zusätzliche Pauschalen (steuerfrei, komplett anrechnungsfrei)
                     </div>
                     <div className="space-y-2">
                       {[
                         {
                           id: "uebungsleiter" as const,
-                          name: "Uebungsleiterpauschale",
+                          name: "Übungsleiterpauschale",
                           monat: LEGAL.pauschalen.uebungsleiter.monat,
                           para: LEGAL.pauschalen.uebungsleiter.paragraph,
                         },
@@ -248,7 +248,7 @@ export function Rechner() {
                       <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
                       <div>
                         <strong>Stop!</strong> Ab 15 Stunden pro Woche verlierst
-                        du den ALG-I-Anspruch komplett – unabhaengig vom Verdienst.
+                        du den ALG-I-Anspruch komplett – unabhängig vom Verdienst.
                       </div>
                     </div>
                   )}
@@ -269,7 +269,7 @@ export function Rechner() {
                         farbe="navy"
                       />
                       <Balken
-                        label="Nebenverdienst (davon behaelst du)"
+                        label="Nebenverdienst (davon behältst du)"
                         wert={
                           alg1Result.stundenOk
                             ? Math.min(nebenNum, LEGAL.alg1.freibetrag)
@@ -290,7 +290,7 @@ export function Rechner() {
                       )}
                       {alg1Result.uebungsleiter > 0 && (
                         <Balken
-                          label="Uebungsleiterpauschale"
+                          label="Übungsleiterpauschale"
                           wert={alg1Result.uebungsleiter}
                           max={alg1Result.gesamt}
                           farbe="teal"
@@ -314,10 +314,10 @@ export function Rechner() {
                       <AlertTriangle className="h-4 w-4" />
                       Meldepflicht (Pflicht!)
                     </div>
-                    Jede Nebentaetigkeit muss{" "}
-                    <strong>spaetestens am ersten Arbeitstag</strong> bei der
-                    Agentur fuer Arbeit gemeldet werden. Verspaetung fuehrt zu
-                    Rueckforderungen.
+                    Jede Nebentätigkeit muss{" "}
+                    <strong>spätestens am ersten Arbeitstag</strong> bei der
+                    Agentur für Arbeit gemeldet werden. Verspätung führt zu
+                    Rückforderungen.
                     <div className="mt-2 text-xs">
                       Hotline: <strong>{LEGAL.alg1.hotline}</strong>
                     </div>
@@ -331,7 +331,7 @@ export function Rechner() {
                 <div className="space-y-6">
                   <div>
                     <label className="mb-2 block text-sm font-bold text-navy-800">
-                      Dein Buergergeld pro Monat
+                      Dein Bürgergeld pro Monat
                     </label>
                     <div className="relative">
                       <Input
@@ -396,7 +396,7 @@ export function Rechner() {
 
                     <div className="space-y-4">
                       <Balken
-                        label="Verbleibendes Buergergeld"
+                        label="Verbleibendes Bürgergeld"
                         wert={bgResult.bgNeu}
                         max={bgResult.gesamt}
                         farbe="navy"
@@ -410,7 +410,7 @@ export function Rechner() {
                       />
                       {bgResult.anrechnung > 0 && (
                         <Balken
-                          label="Anrechnung aufs Buergergeld"
+                          label="Anrechnung aufs Bürgergeld"
                           wert={bgResult.anrechnung}
                           max={bgResult.gesamt}
                           farbe="amber"
@@ -421,7 +421,7 @@ export function Rechner() {
 
                   <div className="rounded-xl border-2 border-teal-200 bg-teal-50 p-4 text-sm text-teal-900">
                     <div className="mb-1 font-bold">Kein Stundenlimit</div>
-                    Beim Buergergeld gibt es keine 15-Stunden-Grenze. Du darfst
+                    Beim Bürgergeld gibt es keine 15-Stunden-Grenze. Du darfst
                     so viel arbeiten, wie du willst – nur das Einkommen wird
                     gestaffelt angerechnet.
                   </div>

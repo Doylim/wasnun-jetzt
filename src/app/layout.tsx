@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   keywords: [
     "arbeitslos nebenverdienst",
-    "buergergeld freibetrag",
+    "bürgergeld freibetrag",
     "ALG 1 freibetrag rechner",
     "minijob 603 euro",
     "uebungsleiterpauschale",

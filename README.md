@@ -1,6 +1,6 @@
 # WasNun.jetzt
 
-Kostenloser Sofort-Helfer fuer arbeitslose Menschen in Deutschland.
+Kostenloser Sofort-Helfer für arbeitslose Menschen in Deutschland.
 
 ## Stack
 
@@ -36,7 +36,7 @@ wasnun-jetzt/
 │   │   └── sections/             # Seitensektionen (Hero, Rechner, FAQ…)
 │   └── lib/
 │       ├── data.ts               # Rechtskonstanten + Kategorien + Plan-Karten
-│       ├── calc.ts               # ALG I / Buergergeld Berechnung
+│       ├── calc.ts               # ALG I / Bürgergeld Berechnung
 │       ├── partner.ts            # Affiliate-Partner Tier 1–3
 │       ├── structured-data.ts    # JSON-LD Generatoren
 │       ├── constants.ts          # SITE_NAME, SITE_URL

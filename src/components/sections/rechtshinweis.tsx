@@ -11,7 +11,7 @@ export function Rechtshinweis() {
             Rechtlicher Hinweis
           </div>
           <h3 className="mb-3 text-xl font-black text-navy-900">
-            Kein Ersatz fuer Rechtsberatung
+            Kein Ersatz für Rechtsberatung
           </h3>
           <div className="space-y-3 text-sm leading-relaxed text-navy-600">
             <p>
@@ -19,17 +19,17 @@ export function Rechtshinweis() {
               <strong className="text-navy-900">
                 kostenloses Informationsangebot
               </strong>{" "}
-              ohne Rechtsberatung. Alle Inhalte sind sorgfaeltig recherchiert und
-              werden regelmaessig aktualisiert. Wir uebernehmen{" "}
+              ohne Rechtsberatung. Alle Inhalte sind sorgfältig recherchiert und
+              werden regelmäßig aktualisiert. Wir übernehmen{" "}
               <strong className="text-navy-900">
-                keine Gewaehr fuer Richtigkeit oder Aktualitaet
+                keine Gewähr für Richtigkeit oder Aktualität
               </strong>
-              . Gesetzliche Regelungen koennen sich jederzeit aendern.
+              . Gesetzliche Regelungen können sich jederzeit ändern.
             </p>
             <p>
               <strong className="text-navy-900">
-                Bitte pruefe alle wichtigen Entscheidungen mit deiner Agentur
-                fuer Arbeit ({LEGAL.alg1.hotline}) oder deinem Jobcenter.
+                Bitte prüfe alle wichtigen Entscheidungen mit deiner Agentur
+                für Arbeit ({LEGAL.alg1.hotline}) oder deinem Jobcenter.
               </strong>
             </p>
           </div>

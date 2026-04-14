@@ -17,10 +17,10 @@ export default function DatenschutzPage() {
           className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-teal-600 hover:underline"
         >
           <ArrowLeft className="h-4 w-4" />
-          Zurueck zur Startseite
+          Zurück zur Startseite
         </Link>
         <h1 className="mb-8 text-4xl font-black text-navy-900">
-          Datenschutzerklaerung
+          Datenschutzerklärung
         </h1>
         <div className="space-y-6 rounded-3xl border border-navy-100 bg-white p-8 text-sm leading-relaxed text-navy-700 shadow-sm">
           <section>
@@ -42,17 +42,17 @@ export default function DatenschutzPage() {
 
           <section>
             <h2 className="mb-2 text-lg font-bold text-navy-900">
-              2. Grundsaetze
+              2. Grundsätze
             </h2>
             <p>
               WasNun.jetzt verarbeitet so wenig personenbezogene Daten wie
-              moeglich. Der Rechner und der Verdienst-Finder funktionieren
-              vollstaendig{" "}
+              möglich. Der Rechner und der Verdienst-Finder funktionieren
+              vollständig{" "}
               <strong className="text-navy-900">
                 ohne Konto und ohne Datenspeicherung
               </strong>
               . Alle Eingaben bleiben lokal in deinem Browser und werden nicht
-              an uns uebertragen.
+              an uns übertragen.
             </p>
           </section>
 
@@ -74,9 +74,9 @@ export default function DatenschutzPage() {
           <section>
             <h2 className="mb-2 text-lg font-bold text-navy-900">4. Cookies</h2>
             <p>
-              Wir setzen keine Tracking-Cookies. Es werden ausschliesslich
-              technisch notwendige Cookies verwendet, die fuer den Betrieb der
-              Website erforderlich sind. Eine Einwilligung ist dafuer nicht
+              Wir setzen keine Tracking-Cookies. Es werden ausschließlich
+              technisch notwendige Cookies verwendet, die für den Betrieb der
+              Website erforderlich sind. Eine Einwilligung ist dafür nicht
               erforderlich (§ 25 Abs. 2 TTDSG).
             </p>
           </section>
@@ -86,14 +86,14 @@ export default function DatenschutzPage() {
               5. Externe Links &amp; Affiliate
             </h2>
             <p>
-              WasNun.jetzt enthaelt Links zu externen Plattformen. Einige dieser
+              WasNun.jetzt enthält Links zu externen Plattformen. Einige dieser
               Links sind{" "}
               <strong className="text-navy-900">Affiliate-Links</strong>: Wenn
-              du dich ueber einen solchen Link bei einem Anbieter registrierst,
-              bekommen wir ggf. eine kleine Provision. Fuer dich entstehen
+              du dich über einen solchen Link bei einem Anbieter registrierst,
+              bekommen wir ggf. eine kleine Provision. Für dich entstehen
               dabei <strong className="text-navy-900">keine Kosten</strong>.
               Unsere rechtlichen Informationen und Empfehlungen werden von
-              Provisionen nicht beeinflusst. Fuer den Datenschutz der
+              Provisionen nicht beeinflusst. Für den Datenschutz der
               verlinkten Seiten sind die jeweiligen Anbieter verantwortlich.
             </p>
           </section>
@@ -104,11 +104,11 @@ export default function DatenschutzPage() {
             </h2>
             <p>
               Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung
-              (Art. 16), Loeschung (Art. 17), Einschraenkung der Verarbeitung
-              (Art. 18), Datenuebertragbarkeit (Art. 20) und Widerspruch (Art.
-              21). Beschwerden koennen bei der zustaendigen
-              Datenschutzaufsichtsbehoerde (Landesbeauftragter fuer
-              Datenschutz Baden-Wuerttemberg) eingereicht werden.
+              (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung
+              (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art.
+              21). Beschwerden können bei der zuständigen
+              Datenschutzaufsichtsbehörde (Landesbeauftragter für
+              Datenschutz Baden-Württemberg) eingereicht werden.
             </p>
           </section>
 
@@ -129,8 +129,8 @@ export default function DatenschutzPage() {
           </section>
 
           <p className="border-t border-navy-100 pt-4 text-xs text-navy-400">
-            Stand: April 2026 · Diese Datenschutzerklaerung wird bei
-            Aenderungen aktualisiert.
+            Stand: April 2026 · Diese Datenschutzerklärung wird bei
+            Änderungen aktualisiert.
           </p>
         </div>
       </div>

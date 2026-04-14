@@ -1,11 +1,11 @@
 # CLAUDE.md – WasNun.jetzt
 
-## Projekt-Uebersicht
+## Projekt-Übersicht
 - **Name:** WasNun.jetzt
-- **Zweck:** Kostenloser Sofort-Helfer fuer arbeitslose Menschen in Deutschland
+- **Zweck:** Kostenloser Sofort-Helfer für arbeitslose Menschen in Deutschland
 - **Betreiber:** Norbert Sommer / Invilus
 - **Lokaler Pfad:** `C:\Projekte\webseiten\wasnun-jetzt\`
-- **Vercel-URL:** wasnun-jetzt.vercel.app (spaeter: wasnun.jetzt)
+- **Vercel-URL:** wasnun-jetzt.vercel.app (später: wasnun.jetzt)
 
 ## Stack (aktualisiert April 2026)
 - Next.js 16 (App Router, Turbopack)
@@ -21,13 +21,13 @@
 1. Immer Deutsch
 2. Umlaute immer korrekt (ae, oe, ue nur wenn Datei bewusst ohne UTF-8)
 3. Mobile-first (breakpoints: md, lg)
-4. Keine unnoetigen neuen Dateien
-5. Git nach jeder wichtigen Aenderung: `git add . && git commit -m "typ: Beschreibung"`
-6. Max. 2 Rueckfragen pro Problem
+4. Keine unnötigen neuen Dateien
+5. Git nach jeder wichtigen Änderung: `git add . && git commit -m "typ: Beschreibung"`
+6. Max. 2 Rückfragen pro Problem
 
 ## Wichtige Dateien
-- `src/lib/data.ts` – alle Rechtskonstanten, Kategorien, Plan-Karten (bei Gesetzesaenderungen HIER anpassen)
-- `src/lib/calc.ts` – Berechnungslogik ALG I + Buergergeld
+- `src/lib/data.ts` – alle Rechtskonstanten, Kategorien, Plan-Karten (bei Gesetzesänderungen HIER anpassen)
+- `src/lib/calc.ts` – Berechnungslogik ALG I + Bürgergeld
 - `src/lib/partner.ts` – Affiliate-Partner (Tier 1–3, Status aktiv/geplant)
 - `src/lib/structured-data.ts` – JSON-LD Schema-Generatoren
 - `src/components/sections/rechner.tsx` – Freibetrag-Rechner mit Balken
@@ -52,11 +52,11 @@ sichtbaren "Werbung"-Kennzeichnung ausgeliefert.
 - [ ] `src/app/layout.tsx` → `robots: { index: true, follow: true }` setzen
 - [ ] Domain in Vercel hinterlegen
 - [ ] Partner-Accounts registrieren + in `partner.ts` auf `"aktiv"` schalten
-- [ ] FAQ auf aktuelle Gesetzeslage pruefen
+- [ ] FAQ auf aktuelle Gesetzeslage prüfen
 - [ ] Impressum + Datenschutz final durchlesen
 - [ ] Mobile testen
 
 ## Bekannte Fallstricke
 - Hydration Mismatch: dynamische Werte erst im `useEffect` setzen
 - Tailwind 4: Farben im `@theme` statt in `tailwind.config.js`
-- Vercel-Cache: `force-dynamic` falls noetig
+- Vercel-Cache: `force-dynamic` falls nötig

@@ -15,7 +15,7 @@ const PUNKTE = [
   {
     icon: ShieldCheck,
     titel: "Immer aktuell",
-    text: "Bei Aenderungen von Mindestlohn, Minijob-Grenze oder Regelsaetzen wird die Seite sofort angepasst.",
+    text: "Bei Änderungen von Mindestlohn, Minijob-Grenze oder Regelsätzen wird die Seite sofort angepasst.",
   },
   {
     icon: HeartHandshake,

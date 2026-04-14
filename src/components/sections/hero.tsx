@@ -18,7 +18,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <Badge variant="success" className="mb-6 gap-2">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-teal-500" />
-              Aktualisiert fuer April 2026
+              Aktualisiert für April 2026
             </Badge>
 
             <h1 className="mb-6 text-balance text-4xl font-black leading-[1.05] tracking-tight text-navy-900 md:text-6xl lg:text-7xl">
@@ -35,7 +35,7 @@ export function Hero() {
 
             <p className="mb-8 max-w-xl text-balance text-lg leading-relaxed text-navy-600 md:text-xl">
               Du bist arbeitslos und willst wissen, was du{" "}
-              <strong className="text-navy-900">ohne Leistungskuerzung</strong>{" "}
+              <strong className="text-navy-900">ohne Leistungskürzung</strong>{" "}
               dazuverdienen darfst? In 60 Sekunden hast du dein Ergebnis –
               kostenlos, anonym, rechtssicher.
             </p>
@@ -96,7 +96,7 @@ export function Hero() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-navy-600">
-                      Uebungsleiter*in
+                      Übungsleiter*in
                     </span>
                     <span className="text-2xl font-bold text-teal-600">
                       + {LEGAL.pauschalen.uebungsleiter.monat} EUR

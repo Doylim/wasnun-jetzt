@@ -20,12 +20,12 @@ type Ort = "zuhause" | "nah" | "auto";
 const ZEIT_LABEL: Record<Zeit, { label: string; sub: string }> = {
   wenig: { label: "Wenig", sub: "1–5 Std. / Woche" },
   mittel: { label: "Mittel", sub: "6–14 Std. / Woche" },
-  viel: { label: "Viel", sub: "15+ Std. (nur Buergergeld)" },
+  viel: { label: "Viel", sub: "15+ Std. (nur Bürgergeld)" },
 };
 
 const ORT_LABEL: Record<Ort, { label: string; sub: string; icon: typeof MapPin }> = {
   zuhause: { label: "Zuhause", sub: "Laptop & Internet reichen", icon: Wrench },
-  nah: { label: "In der Naehe", sub: "Rad, Bus oder zu Fuss", icon: MapPin },
+  nah: { label: "In der Nähe", sub: "Rad, Bus oder zu Fuß", icon: MapPin },
   auto: { label: "Mobil mit Auto", sub: "Flexibel im Umkreis", icon: MapPin },
 };
 
@@ -87,7 +87,7 @@ export function VerdienstFinder() {
           </h2>
           <p className="mx-auto max-w-2xl text-balance text-lg text-navy-600">
             Zwei Fragen – und du bekommst die drei passendsten
-            Verdienstmoeglichkeiten mit konkretem Euro-Bereich pro Monat.
+            Verdienstmöglichkeiten mit konkretem Euro-Bereich pro Monat.
           </p>
         </div>
 
@@ -226,7 +226,7 @@ function PartnerListe({ partner }: { partner: Partner[] }) {
       <div className="mb-4 flex items-center gap-3">
         <Badge variant="outline">Werbung</Badge>
         <h4 className="text-lg font-bold text-navy-900">
-          Passende Plattformen fuer dich
+          Passende Plattformen für dich
         </h4>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
@@ -252,8 +252,8 @@ function PartnerListe({ partner }: { partner: Partner[] }) {
         ))}
       </div>
       <p className="mt-3 text-xs text-navy-400">
-        Affiliate-Links. Wir bekommen ggf. eine Provision, wenn du dich ueber
-        diese Links anmeldest. Fuer dich entstehen keine Kosten.
+        Affiliate-Links. Wir bekommen ggf. eine Provision, wenn du dich über
+        diese Links anmeldest. Für dich entstehen keine Kosten.
       </p>
     </div>
   );

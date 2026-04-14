@@ -45,7 +45,7 @@ export function SiteHeader() {
         <button
           className="md:hidden"
           onClick={() => setOffen(!offen)}
-          aria-label={offen ? "Menue schliessen" : "Menue oeffnen"}
+          aria-label={offen ? "Menü schließen" : "Menü öffnen"}
           aria-expanded={offen}
         >
           {offen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

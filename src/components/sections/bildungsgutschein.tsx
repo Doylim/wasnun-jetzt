@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 const SCHRITTE = [
-  "Termin bei der Agentur fuer Arbeit vereinbaren",
+  "Termin bei der Agentur für Arbeit vereinbaren",
   "Bildungsgutschein beantragen (§ 81 SGB III)",
-  "AZAV-zertifizierten Kurs auswaehlen",
+  "AZAV-zertifizierten Kurs auswählen",
   "Qualifikation erwerben – der Staat zahlt",
   "Im Verein arbeiten: 275 EUR/Monat steuerfrei",
 ];
@@ -15,7 +15,7 @@ const ECKDATEN = [
   {
     label: "Kurskosten",
     wert: "0 EUR",
-    sub: "Komplett ueber Bildungsgutschein",
+    sub: "Komplett über Bildungsgutschein",
     farbe: "text-teal-600",
   },
   {
@@ -27,13 +27,13 @@ const ECKDATEN = [
   {
     label: "Danach verdienen",
     wert: "275 EUR/Mo",
-    sub: "Uebungsleiterpauschale",
+    sub: "Übungsleiterpauschale",
     farbe: "text-teal-600",
   },
   {
     label: "Pro Jahr",
     wert: "3.300 EUR",
-    sub: "Zusaetzlich zum Freibetrag",
+    sub: "Zusätzlich zum Freibetrag",
     farbe: "text-teal-600",
   },
 ];
@@ -48,7 +48,7 @@ export function Bildungsgutschein() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
             <Badge variant="teal" className="mb-6">
-              Der unterschaetzte Weg
+              Der unterschätzte Weg
             </Badge>
             <h2 className="mb-6 text-balance text-4xl font-black leading-[1.05] md:text-5xl lg:text-6xl">
               Weiterbildung. <br />

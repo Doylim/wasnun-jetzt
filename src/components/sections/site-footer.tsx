@@ -16,7 +16,7 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-navy-300">
-              Kostenloser Sofort-Helfer fuer arbeitslose Menschen in
+              Kostenloser Sofort-Helfer für arbeitslose Menschen in
               Deutschland. Ohne Anmeldung, ohne Kosten.
             </p>
           </div>
@@ -76,7 +76,7 @@ export function SiteFooter() {
 
         <div className="mt-10 flex flex-col justify-between gap-3 border-t border-white/10 pt-6 text-xs text-navy-400 sm:flex-row">
           <span>© 2026 WasNun.jetzt · Norbert Sommer · Heidelberg</span>
-          <span>SGB II/III · Minijob 603 EUR · Stand April 2026 · Ohne Gewaehr</span>
+          <span>SGB II/III · Minijob 603 EUR · Stand April 2026 · Ohne Gewähr</span>
         </div>
       </div>
     </footer>

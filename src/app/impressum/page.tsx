@@ -17,7 +17,7 @@ export default function ImpressumPage() {
           className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-teal-600 hover:underline"
         >
           <ArrowLeft className="h-4 w-4" />
-          Zurueck zur Startseite
+          Zurück zur Startseite
         </Link>
         <h1 className="mb-8 text-4xl font-black text-navy-900">Impressum</h1>
         <div className="space-y-5 rounded-3xl border border-navy-100 bg-white p-8 text-sm leading-relaxed text-navy-700 shadow-sm">
@@ -50,7 +50,7 @@ export default function ImpressumPage() {
               Umsatzsteuer-Identifikationsnummer
             </strong>
             <br />
-            gemaess § 27a Umsatzsteuergesetz: {IMPRESSUM.ust}
+            gemäß § 27a Umsatzsteuergesetz: {IMPRESSUM.ust}
           </section>
           <section>
             <strong className="text-navy-900">
@@ -69,7 +69,7 @@ export default function ImpressumPage() {
             <strong className="text-navy-900">Haftungshinweis</strong>
             <br />
             Dieses Portal ist ein kostenloses Informationsangebot ohne
-            Rechtsberatung. Alle Angaben ohne Gewaehr. Wir bemuehen uns stets,
+            Rechtsberatung. Alle Angaben ohne Gewähr. Wir bemühen uns stets,
             die aktuellste Gesetzeslage abzubilden.
           </section>
         </div>

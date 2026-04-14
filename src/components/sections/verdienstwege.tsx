@@ -37,7 +37,7 @@ export function Verdienstwege() {
             Vier Wege. Vier Strategien.
           </h2>
           <p className="mx-auto max-w-2xl text-balance text-lg text-navy-600">
-            Von &bdquo;heute noch loslegen&ldquo; bis zu cleveren Freibetraegen,
+            Von &bdquo;heute noch loslegen&ldquo; bis zu cleveren Freibeträgen,
             die kaum jemand kennt.
           </p>
         </div>

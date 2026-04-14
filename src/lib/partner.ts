@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────
-// Affiliate-Partner fuer WasNun.jetzt
+// Affiliate-Partner für WasNun.jetzt
 // WICHTIG: Jeder Eintrag wird als "Werbung" gekennzeichnet.
 // Die rechtlichen Informationen der Seite werden von der
 // Kommerzialisierung strikt getrennt (§ 6 TMG).
@@ -29,7 +29,7 @@ export const PARTNER: Partner[] = [
   {
     id: "zenjob",
     name: "Zenjob",
-    beschreibung: "Kurzfristige Schichten in Gastro, Einzelhandel und Lager. Anmeldung in Minuten, erster Einsatz oft schon am naechsten Tag.",
+    beschreibung: "Kurzfristige Schichten in Gastro, Einzelhandel und Lager. Anmeldung in Minuten, erster Einsatz oft schon am nächsten Tag.",
     verdienst: "13,90-20 EUR/Std.",
     url: "https://www.zenjob.com",
     tier: 1,
@@ -41,7 +41,7 @@ export const PARTNER: Partner[] = [
   {
     id: "coople",
     name: "Coople",
-    beschreibung: "Flexible Jobs fuer Gastronomie, Events und Retail. Schichten selbst waehlen, digitale Stundenzettel.",
+    beschreibung: "Flexible Jobs für Gastronomie, Events und Retail. Schichten selbst wählen, digitale Stundenzettel.",
     verdienst: "14-22 EUR/Std.",
     url: "https://www.coople.com/de",
     tier: 1,
@@ -53,7 +53,7 @@ export const PARTNER: Partner[] = [
   {
     id: "clickworker",
     name: "Clickworker",
-    beschreibung: "Mikrojobs am Rechner: Texte schreiben, Daten kategorisieren, Umfragen. Voellig ortsunabhaengig.",
+    beschreibung: "Mikrojobs am Rechner: Texte schreiben, Daten kategorisieren, Umfragen. Völlig ortsunabhängig.",
     verdienst: "50-300 EUR/Monat",
     url: "https://www.clickworker.de",
     tier: 1,
@@ -65,7 +65,7 @@ export const PARTNER: Partner[] = [
   {
     id: "appjobber",
     name: "AppJobber",
-    beschreibung: "Kleinauftraege per Smartphone in deiner Naehe: Fotos, Preischecks, kurze Recherchen. Heute anmelden, heute verdienen.",
+    beschreibung: "Kleinaufträge per Smartphone in deiner Nähe: Fotos, Preischecks, kurze Recherchen. Heute anmelden, heute verdienen.",
     verdienst: "30-200 EUR/Monat",
     url: "https://www.appjobber.de",
     tier: 1,
@@ -89,7 +89,7 @@ export const PARTNER: Partner[] = [
   {
     id: "preply",
     name: "Preply",
-    beschreibung: "Online-Nachhilfe in Faechern die du beherrschst. Stundensatz selbst waehlen, feste Stammkundschaft aufbauen.",
+    beschreibung: "Online-Nachhilfe in Fächern die du beherrschst. Stundensatz selbst wählen, feste Stammkundschaft aufbauen.",
     verdienst: "15-40 EUR/Std.",
     url: "https://preply.com/de",
     tier: 1,
@@ -99,12 +99,12 @@ export const PARTNER: Partner[] = [
     tags: ["zuhause", "profi", "flexibel"],
   },
 
-  // ── TIER 2: Bildung & Foerderung ──
+  // ── TIER 2: Bildung & Förderung ──
   {
     id: "iu",
     name: "IU Fernstudium",
-    beschreibung: "Staatlich anerkannte Abschluesse, oft ueber Bildungsgutschein (§ 81 SGB III) komplett foerderbar. AZAV-zertifiziert.",
-    verdienst: "Qualifikation fuer bessere Jobs",
+    beschreibung: "Staatlich anerkannte Abschlüsse, oft über Bildungsgutschein (§ 81 SGB III) komplett förderbar. AZAV-zertifiziert.",
+    verdienst: "Qualifikation für bessere Jobs",
     url: "https://www.iu-fernstudium.de",
     tier: 2,
     typ: "bildung",
@@ -115,8 +115,8 @@ export const PARTNER: Partner[] = [
   {
     id: "sgd",
     name: "SGD Fernschule",
-    beschreibung: "Traditionsreiche Fernschule mit ueber 200 Kursen. Viele Angebote sind ueber Bildungsgutschein foerderfaehig.",
-    verdienst: "Qualifikation fuer bessere Jobs",
+    beschreibung: "Traditionsreiche Fernschule mit über 200 Kursen. Viele Angebote sind über Bildungsgutschein förderfähig.",
+    verdienst: "Qualifikation für bessere Jobs",
     url: "https://www.sgd.de",
     tier: 2,
     typ: "bildung",
@@ -129,8 +129,8 @@ export const PARTNER: Partner[] = [
   {
     id: "taxfix",
     name: "Taxfix",
-    beschreibung: "Steuererklaerung per App in unter einer Stunde. Gerade bei Nebenverdienst oft mehrere hundert Euro Rueckerstattung moeglich.",
-    verdienst: "Rueckerstattung sichern",
+    beschreibung: "Steuererklärung per App in unter einer Stunde. Gerade bei Nebenverdienst oft mehrere hundert Euro Rückerstattung möglich.",
+    verdienst: "Rückerstattung sichern",
     url: "https://taxfix.de",
     tier: 3,
     typ: "finanz",
