@@ -45,7 +45,8 @@ export const JOURNEY_KARTEN: JourneyKarte[] = [
     freibetragEur: 275,
     paragraph: "§ 3 Nr. 26 EStG",
     erklaerung:
-      "Als Trainer, Chorleiter, Betreuer oder Ausbilder bei einem gemeinnützigen Verein. Kombinierbar mit dem Grundfreibetrag: 165 + 275 = 440 EUR/Monat.",
+      "Als Trainer, Chorleiter, Betreuer oder Ausbilder bei einem gemeinnützigen Verein, einer Schule oder öffentlichen Einrichtung. Kombinierbar mit dem Grundfreibetrag: 165 + 275 = 440 EUR/Monat komplett anrechnungsfrei.",
+    tipp: "Keine Trainer-Lizenz? Als Betreuer oder Co-Trainer geht es meist auch ohne. Für die C-Trainer-Lizenz zahlt der Bildungsgutschein 100 % der Kosten.",
     partnerIds: ["bagfa-vereine", "academy-of-sports", "drk-ausbilder", "vhs-kursleitung"],
     bildungsgutschein: true,
   },
@@ -57,7 +58,8 @@ export const JOURNEY_KARTEN: JourneyKarte[] = [
     freibetragEur: 80,
     paragraph: "§ 3 Nr. 26a EStG",
     erklaerung:
-      "Als Vereinsvorstand, Kassenwart, Platzwart oder für administrative Aufgaben in gemeinnützigen Vereinen. Kombinierbar mit den anderen Pauschalen bis 520 EUR/Monat.",
+      "Als Vereinsvorstand, Kassenwart, Platzwart oder für organisatorische Aufgaben in gemeinnützigen Vereinen. Kombinierbar mit dem Grundfreibetrag und der Übungsleiterpauschale bis 520 EUR/Monat anrechnungsfrei.",
+    tipp: "Die 80 EUR gelten pro Person und Jahres-Engagement – nicht pro Verein. Wer in zwei Vereinen ehrenamtlich aktiv ist, bekommt trotzdem nur einmal 80 EUR/Monat pauschal.",
     partnerIds: ["bagfa-ehrenamt", "drk-ehrenamt", "caritas"],
   },
   {

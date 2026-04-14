@@ -104,16 +104,19 @@ export function JourneyCard({ karte, aktiv, onToggle }: Props) {
       </div>
 
       <div className="flex flex-1 flex-col gap-4 p-6">
-        <p className="text-sm leading-relaxed text-navy-700">
-          {karte.erklaerung}
-        </p>
+        <div className="flex flex-col gap-4">
+          <p className="text-sm leading-relaxed text-navy-700">
+            {karte.erklaerung}
+          </p>
 
-        {karte.tipp && (
-          <div className="rounded-xl bg-teal-50 p-3 text-xs leading-relaxed text-teal-900">
-            <strong>Tipp:</strong> {karte.tipp}
-          </div>
-        )}
+          {karte.tipp && (
+            <div className="rounded-xl bg-teal-50 p-3 text-xs leading-relaxed text-teal-900">
+              <strong>Tipp:</strong> {karte.tipp}
+            </div>
+          )}
+        </div>
 
+        <div className="mt-auto flex flex-col gap-4">
         {partner.length > 0 && (
           <div>
             <div className="mb-2 flex items-center gap-2">
@@ -180,6 +183,7 @@ export function JourneyCard({ karte, aktiv, onToggle }: Props) {
             })}
           </div>
         )}
+        </div>
       </div>
     </article>
   );

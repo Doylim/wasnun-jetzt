@@ -80,7 +80,7 @@ export function Journey() {
             </p>
           </div>
 
-          <div className="grid items-start gap-5 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2">
             {JOURNEY_KARTEN.map((karte) => (
               <div
                 key={karte.id}
