@@ -83,7 +83,36 @@ export default function DatenschutzPage() {
 
           <section>
             <h2 className="mb-2 text-lg font-bold text-navy-900">
-              5. Externe Links &amp; Affiliate
+              5. Newsletter und Plan-Versand
+            </h2>
+            <p>
+              Wenn du deinen persönlichen Plan per E-Mail anforderst, speichern
+              wir zusätzlich zur E-Mail-Adresse die freiwillig eingegebenen
+              Rechner-Daten (ALG-I-Betrag, Stunden pro Woche, aktivierte
+              Pauschalen, errechneter Freibetrag) als Kontaktattribute bei
+              unserem Mail-Dienstleister Brevo (Sendinblue SAS, 106 boulevard
+              Haussmann, 75008 Paris, Frankreich). Das erlaubt uns, dir deinen
+              persönlichen Plan zuzusenden und gelegentlich thematisch passende
+              Tipps zu schicken.
+            </p>
+            <p className="mt-3">
+              Wir nutzen ein Double-Opt-in-Verfahren: Nach deiner Anforderung
+              bekommst du eine Bestätigungs-Mail mit einem Link. Erst nach
+              Klick darauf wird deine Adresse in unseren Verteiler aufgenommen
+              und der Plan verschickt.
+            </p>
+            <p className="mt-3">
+              <strong className="text-navy-900">Rechtsgrundlage:</strong>{" "}
+              Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Du kannst die
+              Einwilligung jederzeit widerrufen, indem du auf den Abmelde-Link
+              in jeder Mail klickst. Nach Widerruf werden sowohl deine Adresse
+              als auch die gespeicherten Rechner-Daten aus Brevo gelöscht.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="mb-2 text-lg font-bold text-navy-900">
+              6. Externe Links &amp; Affiliate
             </h2>
             <p>
               WasNun.jetzt enthält Links zu externen Plattformen. Einige dieser
@@ -100,7 +129,7 @@ export default function DatenschutzPage() {
 
           <section>
             <h2 className="mb-2 text-lg font-bold text-navy-900">
-              6. Deine Rechte
+              7. Deine Rechte
             </h2>
             <p>
               Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung
@@ -114,7 +143,7 @@ export default function DatenschutzPage() {
 
           <section>
             <h2 className="mb-2 text-lg font-bold text-navy-900">
-              7. Kontakt
+              8. Kontakt
             </h2>
             <p>
               Bei Fragen zum Datenschutz wende dich an:
