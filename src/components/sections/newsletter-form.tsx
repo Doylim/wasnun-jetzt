@@ -5,18 +5,21 @@ import { Check, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-type Status = "idle" | "loading" | "success" | "error";
-
 type Props = {
-  // Optionale Plan-Daten — werden in Task 8 (Plan-Mail) genutzt,
-  // aktuell ignoriert. So bleibt Task 1 unabhängig kompilierbar.
-  algI?: number;
-  stunden?: number;
-  aktivKarten?: Set<string>;
-  gesamtFreibetrag?: number;
+  algI: number;
+  stunden: number;
+  aktivKarten: Set<string>;
+  gesamtFreibetrag: number;
 };
 
-export function NewsletterForm(_props: Props = {}) {
+type Status = "idle" | "loading" | "success" | "error";
+
+export function NewsletterForm({
+  algI,
+  stunden,
+  aktivKarten,
+  gesamtFreibetrag,
+}: Props) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [fehler, setFehler] = useState<string | null>(null);
@@ -30,7 +33,13 @@ export function NewsletterForm(_props: Props = {}) {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({
+          email,
+          algI,
+          stunden,
+          aktivKarten: Array.from(aktivKarten),
+          gesamtFreibetrag,
+        }),
       });
       if (!res.ok) {
         const data = (await res.json().catch(() => ({}))) as { error?: string };
@@ -39,17 +48,22 @@ export function NewsletterForm(_props: Props = {}) {
       setStatus("success");
     } catch (err) {
       setStatus("error");
-      setFehler(err instanceof Error ? err.message : "Probiere es später nochmal.");
+      setFehler(
+        err instanceof Error ? err.message : "Probiere es später nochmal.",
+      );
     }
   }
 
   if (status === "success") {
     return (
-      <div className="flex items-center gap-3 rounded-2xl border-2 border-teal-300 bg-teal-50 p-5 text-teal-900">
-        <Check className="h-6 w-6 text-teal-600" aria-hidden="true" />
+      <div className="flex items-start gap-3 rounded-3xl border-2 border-teal-300 bg-teal-50 p-6 text-teal-900">
+        <Check className="mt-0.5 h-6 w-6 shrink-0 text-teal-600" aria-hidden="true" />
         <div>
-          <div className="font-bold">Danke!</div>
-          <div className="text-sm">Schau in dein Postfach – dein Plan ist unterwegs.</div>
+          <div className="text-lg font-black">Check dein Postfach</div>
+          <div className="mt-1 text-sm">
+            Wir haben dir eine Bestätigungs-Mail geschickt. Klick den Link
+            darin — dann kommt dein Plan. (Auch Spam-Ordner prüfen.)
+          </div>
         </div>
       </div>
     );
@@ -58,13 +72,17 @@ export function NewsletterForm(_props: Props = {}) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-navy-100 bg-white p-5"
-      aria-label="Newsletter-Anmeldung"
+      className="rounded-3xl border border-navy-100 bg-white p-6"
+      aria-label="Plan per E-Mail anfordern"
     >
-      <div className="mb-3 flex items-center gap-2 text-sm font-bold text-navy-900">
-        <Mail className="h-4 w-4 text-teal-600" aria-hidden="true" />
-        Plan per E-Mail + 1× im Monat neue Tipps
+      <div className="mb-1 flex items-center gap-2 text-base font-black text-navy-900">
+        <Mail className="h-5 w-5 text-teal-600" aria-hidden="true" />
+        Plan per E-Mail — kostenlos
       </div>
+      <p className="mb-4 text-sm text-navy-600">
+        Du bekommst deinen persönlichen Plan sofort nach Bestätigung + 1× im
+        Monat neue Tipps. Abmeldung jederzeit mit einem Klick.
+      </p>
       <div className="flex flex-col gap-2 sm:flex-row">
         <Input
           type="email"
@@ -82,7 +100,7 @@ export function NewsletterForm(_props: Props = {}) {
           disabled={status === "loading"}
           className="h-12"
         >
-          {status === "loading" ? "Sende…" : "Eintragen"}
+          {status === "loading" ? "Sende…" : "Plan zuschicken"}
         </Button>
       </div>
       {fehler && (
@@ -91,7 +109,8 @@ export function NewsletterForm(_props: Props = {}) {
         </div>
       )}
       <p className="mt-3 text-xs text-navy-500">
-        Freiwillig, kein Tracking. Abmeldung mit einem Klick.
+        Freiwillig. Daten werden nur für Plan + Tipps genutzt
+        (<a href="/datenschutz" className="underline">Datenschutz</a>).
       </p>
     </form>
   );
