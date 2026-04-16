@@ -7,7 +7,16 @@ import { Input } from "@/components/ui/input";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function NewsletterForm() {
+type Props = {
+  // Optionale Plan-Daten — werden in Task 8 (Plan-Mail) genutzt,
+  // aktuell ignoriert. So bleibt Task 1 unabhängig kompilierbar.
+  algI?: number;
+  stunden?: number;
+  aktivKarten?: Set<string>;
+  gesamtFreibetrag?: number;
+};
+
+export function NewsletterForm(_props: Props = {}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [fehler, setFehler] = useState<string | null>(null);
