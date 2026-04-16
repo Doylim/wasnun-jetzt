@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --experimental-strip-types --test \"tests/**/*.test.?(m)js\"",
+    "test:watch": "node --experimental-strip-types --test --watch \"tests/**/*.test.?(m)js\""
   },
   "dependencies": {
     "next": "^16.2.1",
