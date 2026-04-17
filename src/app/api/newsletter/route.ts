@@ -142,6 +142,10 @@ export async function POST(request: Request) {
 </table>
 </body></html>`;
 
+  const senderEmail =
+    process.env.BREVO_SENDER_EMAIL || "noreply@wasnun-jetzt.de";
+  const senderName = process.env.BREVO_SENDER_NAME || "Wasnun-Jetzt";
+
   const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
@@ -149,7 +153,7 @@ export async function POST(request: Request) {
       "api-key": brevoKey,
     },
     body: JSON.stringify({
-      sender: { name: "Wasnun-jetzt", email: "noreply@wasnun-jetzt.de" },
+      sender: { name: senderName, email: senderEmail },
       to: [{ email: body.email }],
       subject: "Bestätige deine Anmeldung — dein Plan wartet",
       htmlContent: confirmHtml,

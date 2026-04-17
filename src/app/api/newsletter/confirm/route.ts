@@ -65,6 +65,10 @@ export async function GET(request: NextRequest) {
   });
 
   // 2. Plan-Mail senden
+  const senderEmail =
+    process.env.BREVO_SENDER_EMAIL || "noreply@wasnun-jetzt.de";
+  const senderName = process.env.BREVO_SENDER_NAME || "Wasnun-Jetzt";
+
   const planMailHtml = buildPlanMailHtml(payload);
   const mailRes = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
@@ -73,7 +77,7 @@ export async function GET(request: NextRequest) {
       "api-key": brevoKey,
     },
     body: JSON.stringify({
-      sender: { name: "Wasnun-jetzt", email: "noreply@wasnun-jetzt.de" },
+      sender: { name: senderName, email: senderEmail },
       to: [{ email: payload.email }],
       subject: "Dein persönlicher ALG-I-Plan",
       htmlContent: planMailHtml,
