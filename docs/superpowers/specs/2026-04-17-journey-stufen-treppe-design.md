@@ -33,8 +33,10 @@ Drei visuell gestaffelte Kacheln, übereinander:
 | Stufe | Betrag  | Default   | Badge           | Abwählbar |
 |-------|---------|-----------|------------------|-----------|
 | 1     | +165 €  | **aktiv** | `SOFORT` (teal) | Nein      |
-| 2     | +275 €  | inaktiv   | `VEREIN NÖTIG` (amber) | Ja |
-| 3     | +80 €   | inaktiv   | `VEREINSROLLE` (amber) | Ja |
+| 2     | +275 €  | inaktiv   | `VEREIN` (amber) | Ja |
+| 3     | +80 €   | inaktiv   | `ROLLE` (amber) | Ja |
+
+**Badges-Design-Prinzip:** Kurz, konsistent, sechs Zeichen oder weniger, jeweils selbsterklärend im Kontext der Kachel (die dahinter stehende Erklärung trägt die Details).
 
 **Interaktion:**
 - Stufe 1 ist permanent aktiv (der Grundfreibetrag gilt für jeden).
@@ -65,13 +67,16 @@ Am Ende der Section, vor dem Newsletter-CTA:
 
 Amber-Hintergrund, Pflicht-Lesung.
 
-### 5. Newsletter-Formular bekommt ALG-I-Feld
+### 5. Newsletter-Formular bekommt ALG-I- und Vornamen-Feld
 
-Weil wir den ALG-I-Input oben rauswerfen, wandert die Eingabe ins Newsletter-Formular:
+Weil wir den ALG-I-Input oben rauswerfen, wandert die Eingabe ins Newsletter-Formular. Zusätzlich kommt ein optionales Vornamen-Feld dazu, damit die Plan-Mail den Nutzer persönlich begrüßen kann und die Brevo-Standard-Attribute (`VORNAME`) sinnvoll gefüllt werden.
 
-- **Neues Feld:** „Dein ALG I pro Monat" (optional, Platzhalter `z. B. 1.200`).
-- Wird in der Plan-Mail im Header personalisiert („abzugsfrei zu deinem ALG I von X EUR") — falls leer: Generisches „+165 EUR/Monat neben ALG I".
-- Bleibt optional: Wer nicht will, bekommt trotzdem einen Plan.
+| Feld       | Pflicht  | Platzhalter                | Nutzung                                                                 |
+|------------|----------|----------------------------|-------------------------------------------------------------------------|
+| Vorname    | optional | `z. B. Norbert`            | Plan-Mail-Begrüßung („Hallo Norbert, hier ist dein Plan..."). Leer → generische Begrüßung. Wird in Brevo als `VORNAME` gespeichert. |
+| ALG I      | optional | `z. B. 1.200`              | Plan-Mail-Header („abzugsfrei zu deinem ALG I von 1.200 EUR"). Leer → „+165 EUR/Monat neben ALG I". |
+| E-Mail     | Pflicht  | `deine@email.de`           | Standard-Newsletter-Feld.                                              |
+| Datenschutz| Pflicht  | Checkbox                   | DSGVO-Consent.                                                         |
 
 ### 6. Section-Headline umbenannt
 
@@ -119,11 +124,11 @@ Neu: **„So viel darfst du neben ALG I verdienen"** (Sub: „Ohne Abzug — abh
 
 ---
 
-## Offene Fragen (TBD in Implementierungsplan)
+## Entschiedene Detail-Fragen (alle geklärt)
 
-1. **Newsletter-Form Vorname-Feld?** Aktuell schickt das Form nur E-Mail. Custom Attributes `VORNAME` in Brevo existieren bereits (Brevo-Standard), könnten jetzt befüllt werden für zukünftige personalisierte Mails. Vorschlag: Vorname als **zusätzliches optionales Feld** im Newsletter-Form. Personalisiert Begrüßung in Plan-Mail („Hallo Norbert, hier ist dein Plan...").
-2. **Headline-Wording final?** „So viel darfst du neben ALG I verdienen" ist Vorschlag. Evtl. besser: „Was du neben ALG I verdienen darfst". Kurze Entscheidung im Plan.
-3. **Badge-Wording für Stufe 2 („VEREIN NÖTIG")** — oder kürzer „VEREIN"? Passt dann zur Länge von „SOFORT".
+1. **Vorname-Feld im Newsletter-Form** — **ja**, als zusätzliches optionales Feld. Dient Plan-Mail-Begrüßung und Brevo-`VORNAME`-Attribut.
+2. **Section-Headline** — „So viel darfst du neben ALG I verdienen" mit Sub „Ohne Abzug — abhängig davon, was auf dich zutrifft." bleibt so.
+3. **Badge-Wording** — kurz & konsistent: `SOFORT` (6) / `VEREIN` (6) / `ROLLE` (5).
 
 ---
 
