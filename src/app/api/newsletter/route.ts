@@ -108,7 +108,9 @@ export async function POST(request: Request) {
     gesamtFreibetrag: body.gesamtFreibetrag,
   });
 
-  const confirmUrl = `${BASE_URL}/api/newsletter/confirm?token=${encodeURIComponent(token)}`;
+  // Token als Path-Segment statt Query-Parameter:
+  // Brevo's Click-Tracking zerstoert sonst den ?token=... Query-String.
+  const confirmUrl = `${BASE_URL}/api/newsletter/confirm/${encodeURIComponent(token)}`;
 
   // Brevo Confirm-Mail senden (kurz und funktional)
   const brevoKey = process.env.BREVO_API_KEY;
