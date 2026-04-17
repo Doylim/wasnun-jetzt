@@ -86,20 +86,15 @@ export const JOURNEY_KARTEN: JourneyKarte[] = [
 ];
 
 export type PlanState = {
-  algI: number;
-  stunden: number;
   aktivKarten: Set<string>;
 };
 
 export type PlanErgebnis = {
   gesamtFreibetrag: number;
   hatPassiv: boolean;
-  warnung15Stunden: boolean;
 };
 
 export function berechnePlan(state: PlanState): PlanErgebnis {
-  const clampedStunden = Math.max(0, state.stunden);
-  const warnung15Stunden = clampedStunden >= 15;
   const hatPassiv = state.aktivKarten.has("passiv");
 
   let gesamtFreibetrag = 0;
@@ -110,5 +105,5 @@ export function berechnePlan(state: PlanState): PlanErgebnis {
     gesamtFreibetrag += karte.freibetragEur;
   }
 
-  return { gesamtFreibetrag, hatPassiv, warnung15Stunden };
+  return { gesamtFreibetrag, hatPassiv };
 }
