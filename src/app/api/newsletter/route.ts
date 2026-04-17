@@ -132,27 +132,33 @@ export async function POST(request: Request) {
 <body style="margin:0;padding:0;background:#faf8f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4;">
 <tr><td align="center" style="padding:32px 16px;">
-<table width="500" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;max-width:500px;margin:0 auto;">
-  <tr><td style="padding:32px;">
-    <h1 style="color:#0f1f3d;font-size:22px;margin:0 0 16px;">Bestätige deine Anmeldung</h1>
-    <p style="color:#334258;font-size:15px;line-height:1.6;margin:0 0 24px;">
-      Du hast deinen persönlichen ALG-I-Plan angefordert. Klick einmal auf den Button, dann bekommst du ihn per Mail:
+<table width="500" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;max-width:500px;margin:0 auto;box-shadow:0 4px 24px rgba(15,31,61,0.08);">
+  <tr><td style="padding:40px 32px;text-align:center;">
+    <div style="display:inline-block;background:#e6f7f3;color:#00867a;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;">Bestätigung</div>
+    <h1 style="color:#0f1f3d;font-size:26px;font-weight:900;margin:0 0 16px;line-height:1.2;">Nur noch ein Klick.</h1>
+    <p style="color:#334258;font-size:16px;line-height:1.6;margin:0 0 32px;">
+      Du hast deinen persönlichen ALG-I-Plan angefordert. Bestätige kurz deine E-Mail — dann kommt er sofort zu dir:
     </p>
-    <table cellpadding="0" cellspacing="0" style="margin:24px 0;">
-      <tr><td>
+    <!-- Bulletproof Button: table + bgcolor + <a> display:block -->
+    <table cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;">
+      <tr><td align="center" bgcolor="#00b89f" style="background:#00b89f;border-radius:10px;">
         <!--[if mso]>
-        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${confirmUrl}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="20%" stroke="f" fillcolor="#00b89f">
+        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${confirmUrl}" style="height:52px;v-text-anchor:middle;width:280px;" arcsize="20%" stroke="f" fillcolor="#00b89f">
           <w:anchorlock/>
-          <center style="color:#ffffff;font-family:'Segoe UI',sans-serif;font-size:15px;font-weight:700;">Plan jetzt zuschicken</center>
+          <center style="color:#ffffff;font-family:'Segoe UI',sans-serif;font-size:16px;font-weight:700;">Plan jetzt zuschicken →</center>
         </v:roundrect>
         <![endif]-->
         <!--[if !mso]><!-- -->
-        <a href="${confirmUrl}" style="display:inline-block;background:#00b89f;color:#ffffff !important;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;">Plan jetzt zuschicken</a>
+        <a href="${confirmUrl}" style="display:inline-block;padding:16px 36px;color:#ffffff !important;text-decoration:none;font-weight:700;font-size:16px;line-height:20px;mso-hide:all;">Plan jetzt zuschicken →</a>
         <!--<![endif]-->
       </td></tr>
     </table>
-    <p style="color:#6b7a94;font-size:12px;line-height:1.5;margin:24px 0 0;">
-      Wenn du diese Anmeldung nicht angefragt hast, ignoriere die Mail einfach — es passiert nichts. Der Link ist 7 Tage gültig.
+    <p style="color:#6b7a94;font-size:13px;line-height:1.6;margin:32px 0 0;">
+      Falls der Button nicht geht, kopiere diesen Link:<br>
+      <a href="${confirmUrl}" style="color:#00867a;word-break:break-all;">${confirmUrl}</a>
+    </p>
+    <p style="color:#8a95a8;font-size:12px;line-height:1.5;margin:24px 0 0;">
+      Der Link ist 7 Tage gültig. Wenn du die Anmeldung nicht angefragt hast, ignoriere die Mail einfach.
     </p>
   </td></tr>
 </table>
