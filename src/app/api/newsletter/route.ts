@@ -123,18 +123,34 @@ export async function POST(request: Request) {
   }
 
   const confirmHtml = `<!DOCTYPE html>
-<html lang="de"><body style="margin:0;padding:0;background:#faf8f4;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+<html lang="de" xmlns:v="urn:schemas-microsoft-com:vml"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<title>Bestätige deine Anmeldung</title>
+</head>
+<body style="margin:0;padding:0;background:#faf8f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4;">
 <tr><td align="center" style="padding:32px 16px;">
-<table width="500" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;padding:32px;max-width:500px;">
-  <tr><td>
+<table width="500" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;max-width:500px;margin:0 auto;">
+  <tr><td style="padding:32px;">
     <h1 style="color:#0f1f3d;font-size:22px;margin:0 0 16px;">Bestätige deine Anmeldung</h1>
     <p style="color:#334258;font-size:15px;line-height:1.6;margin:0 0 24px;">
-      Du hast deinen persönlichen ALG-I-Plan angefordert. Klick einmal hier, dann bekommst du ihn per Mail:
+      Du hast deinen persönlichen ALG-I-Plan angefordert. Klick einmal auf den Button, dann bekommst du ihn per Mail:
     </p>
-    <p style="margin:24px 0;">
-      <a href="${confirmUrl}" style="display:inline-block;background:#00b89f;color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;">Plan jetzt zuschicken</a>
-    </p>
+    <table cellpadding="0" cellspacing="0" style="margin:24px 0;">
+      <tr><td>
+        <!--[if mso]>
+        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${confirmUrl}" style="height:48px;v-text-anchor:middle;width:240px;" arcsize="20%" stroke="f" fillcolor="#00b89f">
+          <w:anchorlock/>
+          <center style="color:#ffffff;font-family:'Segoe UI',sans-serif;font-size:15px;font-weight:700;">Plan jetzt zuschicken</center>
+        </v:roundrect>
+        <![endif]-->
+        <!--[if !mso]><!-- -->
+        <a href="${confirmUrl}" style="display:inline-block;background:#00b89f;color:#ffffff !important;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;">Plan jetzt zuschicken</a>
+        <!--<![endif]-->
+      </td></tr>
+    </table>
     <p style="color:#6b7a94;font-size:12px;line-height:1.5;margin:24px 0 0;">
       Wenn du diese Anmeldung nicht angefragt hast, ignoriere die Mail einfach — es passiert nichts. Der Link ist 7 Tage gültig.
     </p>

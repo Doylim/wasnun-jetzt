@@ -107,15 +107,18 @@ export function buildPlanMailHtml(payload: NewsletterTokenPayload): string {
     : "";
 
   return `<!DOCTYPE html>
-<html lang="de"><head>
+<html lang="de" xmlns:v="urn:schemas-microsoft-com:vml"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
 <title>Dein Plan</title>
 </head>
 <body style="margin:0;padding:0;background:#faf8f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#0f1f3d;">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf8f4;">
 <tr><td align="center" style="padding:24px 12px;">
-<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:16px;padding:32px;">
+<table width="600" align="center" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:16px;margin:0 auto;box-shadow:0 4px 24px rgba(15,31,61,0.08);">
+<tr><td style="padding:32px;">
+<table width="100%" cellpadding="0" cellspacing="0">
 
   <tr><td style="padding-bottom:8px;color:#6b7a94;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;">
     Dein Plan für ALG I + Nebeneinkommen · ${formatDate()}
@@ -163,6 +166,8 @@ export function buildPlanMailHtml(payload: NewsletterTokenPayload): string {
     <a href="{{params.unsubscribe}}" style="color:#00867a;text-decoration:none;">Newsletter abmelden</a>
   </td></tr>
 
+</table>
+</td></tr>
 </table>
 </td></tr>
 </table>
