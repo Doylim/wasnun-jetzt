@@ -48,6 +48,18 @@ export async function GET(
 
   // 1. Brevo-Kontakt anlegen/updaten mit Custom-Attributen
   // Brevo tut nichts, wenn Kontakt schon existiert und updateEnabled=true ist.
+  const attributes: Record<string, string | number> = {
+    STUNDEN_WOCHE: payload.stunden,
+    PAUSCHALEN: payload.aktivKarten.join(","),
+    GESAMT_FREIBETRAG: payload.gesamtFreibetrag,
+  };
+  if (payload.vorname) {
+    attributes.VORNAME = payload.vorname;
+  }
+  if (payload.algI && payload.algI > 0) {
+    attributes.ALG_I_BETRAG = payload.algI;
+  }
+
   await fetch("https://api.brevo.com/v3/contacts", {
     method: "POST",
     headers: {
@@ -58,12 +70,7 @@ export async function GET(
       email: payload.email,
       listIds: listId ? [listId] : undefined,
       updateEnabled: true,
-      attributes: {
-        ALG_I_BETRAG: payload.algI,
-        STUNDEN_WOCHE: payload.stunden,
-        PAUSCHALEN: payload.aktivKarten.join(","),
-        GESAMT_FREIBETRAG: payload.gesamtFreibetrag,
-      },
+      attributes,
     }),
   }).catch((e) => {
     console.error("[confirm] Brevo Contact-Upsert Fehler (nicht blockierend):", e);
