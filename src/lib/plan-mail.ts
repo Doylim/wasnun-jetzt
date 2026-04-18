@@ -55,6 +55,16 @@ function formatDate(): string {
   });
 }
 
+function escapeHtml(s: string): string {
+  return s.replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[c] ?? c);
+}
+
 export function buildPlanMailHtml(payload: NewsletterTokenPayload): string {
   const aktive = payload.aktivKarten
     .map((id) => PAUSCHALEN[id])
@@ -91,13 +101,7 @@ export function buildPlanMailHtml(payload: NewsletterTokenPayload): string {
     )
     .join("");
 
-  const warnbox15h =
-    payload.stunden >= 15
-      ? `
-    <div style="background:#fee2e2;border:2px solid #fca5a5;border-radius:12px;padding:16px;margin:24px 0;color:#7f1d1d;font-size:14px;">
-      <strong>Stunden-Warnung:</strong> Du darfst max. 14 Std. 59 Min. pro Woche arbeiten. Ab 15 Stunden verlierst du ALG I komplett. Aktuell liegst du bei ${payload.stunden} Stunden — reduziere zuerst, dann setze den Plan um.
-    </div>`
-      : `
+  const warnbox15h = `
     <div style="background:#fef3c7;border:2px solid #fde68a;border-radius:12px;padding:16px;margin:24px 0;color:#78350f;font-size:14px;">
       <strong>Die 15-Stunden-Regel:</strong> Du darfst max. 14 Std. 59 Min. pro Woche arbeiten. Ab 15 Stunden verlierst du ALG I komplett.
     </div>`;
@@ -105,6 +109,14 @@ export function buildPlanMailHtml(payload: NewsletterTokenPayload): string {
   const passivHinweis = hatPassiv
     ? `<p style="color:#334258;font-size:14px;margin:12px 0 0;">+ <strong>unbegrenzt aus Vermietung und Kapital</strong> — diese Einkünfte sind nicht anrechenbar.</p>`
     : "";
+
+  const vornameBegruessung = payload.vorname
+    ? `<tr><td style="padding:0 0 16px;color:#0f1f3d;font-size:16px;"><strong>Hallo ${escapeHtml(payload.vorname)},</strong> hier ist dein Plan:</td></tr>`
+    : "";
+
+  const algIZeile = payload.algI && payload.algI > 0
+    ? `monatlich — abzugsfrei zu deinem ALG I von <strong>${formatEur(payload.algI)}</strong>`
+    : `monatlich — abzugsfrei neben deinem ALG I`;
 
   return `<!DOCTYPE html>
 <html lang="de" xmlns:v="urn:schemas-microsoft-com:vml"><head>
@@ -124,9 +136,11 @@ export function buildPlanMailHtml(payload: NewsletterTokenPayload): string {
     Dein Plan für ALG I + Nebeneinkommen · ${formatDate()}
   </td></tr>
 
+  ${vornameBegruessung}
+
   <tr><td align="center" style="padding:16px 0 8px;">
     <div style="font-size:48px;font-weight:900;color:#00867a;line-height:1.1;">+${formatEur(payload.gesamtFreibetrag)}</div>
-    <div style="margin-top:8px;font-size:16px;color:#334258;">monatlich — abzugsfrei zu deinem ALG I von <strong>${formatEur(payload.algI)}</strong></div>
+    <div style="margin-top:8px;font-size:16px;color:#334258;">${algIZeile}</div>
   </td></tr>
 
   <tr><td style="padding-top:24px;">
