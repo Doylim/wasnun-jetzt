@@ -47,11 +47,18 @@ function isSafeNumber(n: unknown, max: number): n is number {
 
 type Payload = {
   email?: unknown;
+  vorname?: unknown;
   algI?: unknown;
   stunden?: unknown;
   aktivKarten?: unknown;
   gesamtFreibetrag?: unknown;
 };
+
+function normalizeVorname(input: unknown): string | undefined {
+  if (typeof input !== "string") return undefined;
+  const trimmed = input.trim().slice(0, 50);
+  return trimmed.length > 0 ? trimmed : undefined;
+}
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://wasnun-jetzt.de";
@@ -99,9 +106,12 @@ export async function POST(request: Request) {
     );
   }
 
+  const vorname = normalizeVorname(body.vorname);
+
   // Token mit Plan-Daten signieren (7 Tage gueltig)
   const token = createToken({
     email: body.email,
+    vorname,
     algI: body.algI,
     stunden: body.stunden,
     aktivKarten,
