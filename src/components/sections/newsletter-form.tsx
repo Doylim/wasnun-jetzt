@@ -6,21 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 type Props = {
-  algI: number;
-  stunden: number;
   aktivKarten: Set<string>;
   gesamtFreibetrag: number;
 };
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function NewsletterForm({
-  algI,
-  stunden,
-  aktivKarten,
-  gesamtFreibetrag,
-}: Props) {
+export function NewsletterForm({ aktivKarten, gesamtFreibetrag }: Props) {
   const [email, setEmail] = useState("");
+  const [vorname, setVorname] = useState("");
+  const [algIInput, setAlgIInput] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [fehler, setFehler] = useState<string | null>(null);
 
@@ -29,14 +24,17 @@ export function NewsletterForm({
     setStatus("loading");
     setFehler(null);
 
+    const algINumber = algIInput ? parseFloat(algIInput) : 0;
+
     try {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          algI,
-          stunden,
+          vorname: vorname.trim() || undefined,
+          algI: Number.isFinite(algINumber) ? algINumber : 0,
+          stunden: 0,
           aktivKarten: Array.from(aktivKarten),
           gesamtFreibetrag,
         }),
@@ -61,8 +59,8 @@ export function NewsletterForm({
         <div>
           <div className="text-lg font-black">Check dein Postfach</div>
           <div className="mt-1 text-sm">
-            Wir haben dir eine Bestätigungs-Mail geschickt. Klick den Link
-            darin — dann kommt dein Plan. (Auch Spam-Ordner prüfen.)
+            Wir haben dir eine Bestätigungs-Mail geschickt. Klick den Link darin
+            — dann kommt dein Plan. (Auch Spam-Ordner prüfen.)
           </div>
         </div>
       </div>
@@ -83,7 +81,33 @@ export function NewsletterForm({
         Du bekommst deinen persönlichen Plan sofort nach Bestätigung + 1× im
         Monat neue Tipps. Abmeldung jederzeit mit einem Klick.
       </p>
-      <div className="flex flex-col gap-2 sm:flex-row">
+
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <Input
+          type="text"
+          placeholder="Vorname (optional)"
+          value={vorname}
+          onChange={(e) => setVorname(e.target.value)}
+          disabled={status === "loading"}
+          aria-label="Vorname (optional)"
+          className="h-12 text-base"
+          maxLength={50}
+        />
+        <Input
+          type="number"
+          placeholder="Dein ALG I (optional)"
+          value={algIInput}
+          onChange={(e) => setAlgIInput(e.target.value)}
+          disabled={status === "loading"}
+          aria-label="Dein ALG I pro Monat (optional)"
+          className="h-12 text-base"
+          min={0}
+          max={10000}
+          inputMode="numeric"
+        />
+      </div>
+
+      <div className="mt-3 flex flex-col gap-2 sm:flex-row">
         <Input
           type="email"
           required
@@ -103,6 +127,7 @@ export function NewsletterForm({
           {status === "loading" ? "Sende…" : "Plan zuschicken"}
         </Button>
       </div>
+
       {fehler && (
         <div role="alert" className="mt-3 text-sm text-red-700">
           {fehler}
