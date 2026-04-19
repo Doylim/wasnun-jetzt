@@ -3,15 +3,7 @@
 import { useState } from "react";
 import { StufenTreppe } from "./stufen-treppe";
 import { JourneyPlan } from "./journey-plan";
-import { NewsletterForm } from "./newsletter-form";
 import type { KartenId } from "@/lib/journey";
-
-const STUFEN_BETRAEGE: Record<KartenId, number> = {
-  grundfreibetrag: 165,
-  uebungsleiter: 275,
-  ehrenamt: 80,
-  passiv: 0,
-};
 
 export function Journey() {
   // Default: nur Grundfreibetrag aktiv — ehrliche 165 EUR als Einstieg
@@ -28,11 +20,6 @@ export function Journey() {
       return next;
     });
   };
-
-  const gesamtFreibetrag = Array.from(aktivKarten).reduce(
-    (sum, id) => sum + (STUFEN_BETRAEGE[id as KartenId] ?? 0),
-    0,
-  );
 
   return (
     <section
@@ -54,13 +41,6 @@ export function Journey() {
             aktivKarten={aktivKarten}
             onToggle={toggleKarte}
           />
-
-          <div className="mx-auto max-w-xl">
-            <NewsletterForm
-              aktivKarten={aktivKarten}
-              gesamtFreibetrag={gesamtFreibetrag}
-            />
-          </div>
 
           <JourneyPlan aktivKarten={aktivKarten} />
         </div>
