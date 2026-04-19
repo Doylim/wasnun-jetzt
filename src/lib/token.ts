@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 
 export type NewsletterTokenPayload = {
   email: string;
+  vorname?: string;
   algI: number;
   stunden: number;
   aktivKarten: string[];

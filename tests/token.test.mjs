@@ -42,3 +42,28 @@ test("verifyToken: kaputter Token-Format -> null", () => {
   assert.equal(verifyToken(""), null);
   assert.equal(verifyToken("a.b.c.d"), null);
 });
+
+test("createToken + verifyToken: Vorname bleibt erhalten", () => {
+  const token = createToken({
+    email: "test@example.com",
+    vorname: "Norbert",
+    algI: 1200,
+    stunden: 0,
+    aktivKarten: ["grundfreibetrag"],
+    gesamtFreibetrag: 165,
+  });
+  const payload = verifyToken(token);
+  assert.equal(payload?.vorname, "Norbert");
+});
+
+test("createToken: ohne Vorname ist payload.vorname undefined", () => {
+  const token = createToken({
+    email: "test@example.com",
+    algI: 0,
+    stunden: 0,
+    aktivKarten: ["grundfreibetrag"],
+    gesamtFreibetrag: 165,
+  });
+  const payload = verifyToken(token);
+  assert.equal(payload?.vorname, undefined);
+});
