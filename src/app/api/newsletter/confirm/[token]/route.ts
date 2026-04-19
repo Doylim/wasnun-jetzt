@@ -3,7 +3,7 @@ import { verifyToken } from "@/lib/token";
 import { buildPlanMailHtml } from "@/lib/plan-mail";
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://wasnun-jetzt.de";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://wasnun-jetzt.vercel.app";
 
 function errorHtml(message: string): string {
   return `<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><title>Fehler</title>
@@ -78,7 +78,7 @@ export async function GET(
 
   // 2. Plan-Mail senden
   const senderEmail =
-    process.env.BREVO_SENDER_EMAIL || "noreply@wasnun-jetzt.de";
+    process.env.BREVO_SENDER_EMAIL || "noreply@wasnun-jetzt.vercel.app";
   const senderName = process.env.BREVO_SENDER_NAME || "Wasnun-Jetzt";
 
   const planMailHtml = buildPlanMailHtml(payload);

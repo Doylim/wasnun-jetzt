@@ -61,7 +61,7 @@ function normalizeVorname(input: unknown): string | undefined {
 }
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://wasnun-jetzt.de";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://wasnun-jetzt.vercel.app";
 
 export async function POST(request: Request) {
   const ip =
@@ -177,7 +177,7 @@ export async function POST(request: Request) {
 </body></html>`;
 
   const senderEmail =
-    process.env.BREVO_SENDER_EMAIL || "noreply@wasnun-jetzt.de";
+    process.env.BREVO_SENDER_EMAIL || "noreply@wasnun-jetzt.vercel.app";
   const senderName = process.env.BREVO_SENDER_NAME || "Wasnun-Jetzt";
 
   const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {

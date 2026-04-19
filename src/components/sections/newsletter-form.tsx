@@ -82,7 +82,7 @@ export function NewsletterForm({ aktivKarten, gesamtFreibetrag }: Props) {
         Monat neue Tipps. Abmeldung jederzeit mit einem Klick.
       </p>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <div className="space-y-3">
         <Input
           type="text"
           placeholder="Vorname (optional)"
@@ -93,39 +93,48 @@ export function NewsletterForm({ aktivKarten, gesamtFreibetrag }: Props) {
           className="h-12 text-base"
           maxLength={50}
         />
+
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <Input
+            type="email"
+            required
+            placeholder="deine@email.de"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={status === "loading"}
+            aria-label="E-Mail-Adresse"
+            className="h-12 flex-1 text-base"
+          />
+          <Button
+            type="submit"
+            variant="primary"
+            disabled={status === "loading"}
+            className="h-12"
+          >
+            {status === "loading" ? "Sende…" : "Plan zuschicken"}
+          </Button>
+        </div>
+      </div>
+
+      <div className="mt-4 border-t border-navy-100 pt-3">
+        <label
+          htmlFor="newsletter-algi"
+          className="mb-1 block text-xs text-navy-500"
+        >
+          Optional: dein ALG-I-Betrag für eine persönliche Mail
+        </label>
         <Input
+          id="newsletter-algi"
           type="number"
-          placeholder="Dein ALG I (optional)"
+          placeholder="z. B. 1.200"
           value={algIInput}
           onChange={(e) => setAlgIInput(e.target.value)}
           disabled={status === "loading"}
-          aria-label="Dein ALG I pro Monat (optional)"
-          className="h-12 text-base"
+          className="h-9 max-w-[180px] text-sm"
           min={0}
           max={10000}
           inputMode="numeric"
         />
-      </div>
-
-      <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-        <Input
-          type="email"
-          required
-          placeholder="deine@email.de"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={status === "loading"}
-          aria-label="E-Mail-Adresse"
-          className="h-12 text-base"
-        />
-        <Button
-          type="submit"
-          variant="primary"
-          disabled={status === "loading"}
-          className="h-12"
-        >
-          {status === "loading" ? "Sende…" : "Plan zuschicken"}
-        </Button>
       </div>
 
       {fehler && (
