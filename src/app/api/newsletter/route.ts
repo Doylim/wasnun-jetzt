@@ -159,13 +159,13 @@ export async function POST(request: Request) {
         </v:roundrect>
         <![endif]-->
         <!--[if !mso]><!-- -->
-        <a href="${confirmUrl}" clicktracking="off" style="display:inline-block;padding:16px 36px;color:#ffffff !important;text-decoration:none;font-weight:700;font-size:16px;line-height:20px;mso-hide:all;">Plan jetzt zuschicken →</a>
+        <a href="${confirmUrl}" clicktracking=off style="display:inline-block;padding:16px 36px;color:#ffffff !important;text-decoration:none;font-weight:700;font-size:16px;line-height:20px;mso-hide:all;">Plan jetzt zuschicken →</a>
         <!--<![endif]-->
       </td></tr>
     </table>
     <p style="color:#6b7a94;font-size:13px;line-height:1.6;margin:32px 0 0;">
       Falls der Button nicht geht, kopiere diesen Link:<br>
-      <a href="${confirmUrl}" clicktracking="off" style="color:#00867a;word-break:break-all;">${confirmUrl}</a>
+      <a href="${confirmUrl}" clicktracking=off style="color:#00867a;word-break:break-all;">${confirmUrl}</a>
     </p>
     <p style="color:#8a95a8;font-size:12px;line-height:1.5;margin:24px 0 0;">
       Der Link ist 7 Tage gültig. Wenn du die Anmeldung nicht angefragt hast, ignoriere die Mail einfach.

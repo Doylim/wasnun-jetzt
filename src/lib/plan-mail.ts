@@ -175,8 +175,8 @@ export function buildPlanMailHtml(payload: NewsletterTokenPayload): string {
   </td></tr>
 
   <tr><td style="padding-top:24px;border-top:1px solid #e6eaf0;color:#8a95a8;font-size:11px;text-align:center;">
-    <a href="https://wasnun-jetzt.vercel.app" clicktracking="off" style="color:#00867a;text-decoration:none;">wasnun-jetzt.vercel.app</a> ·
-    <a href="https://wasnun-jetzt.vercel.app/impressum" clicktracking="off" style="color:#00867a;text-decoration:none;">Impressum</a> ·
+    <a href="https://wasnun-jetzt.vercel.app" clicktracking=off style="color:#00867a;text-decoration:none;">wasnun-jetzt.vercel.app</a> ·
+    <a href="https://wasnun-jetzt.vercel.app/impressum" clicktracking=off style="color:#00867a;text-decoration:none;">Impressum</a> ·
     <a href="{{params.unsubscribe}}" style="color:#00867a;text-decoration:none;">Newsletter abmelden</a>
   </td></tr>
 
