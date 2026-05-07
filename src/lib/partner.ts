@@ -225,17 +225,24 @@ export const PARTNER: Partner[] = [
   },
 ];
 
+// Alle Helper unten filtern hart auf status="aktiv". Wer alle Partner inkl.
+// "geplant" braucht (z.B. Admin-Vorschauen), arbeitet direkt mit `PARTNER`.
+// So ist ausgeschlossen, dass ein "geplant"-Partner versehentlich live geht
+// und ohne Affiliate-Vertrag verlinkt wird.
+
 export function aktivePartner(): Partner[] {
   return PARTNER.filter((p) => p.status === "aktiv");
 }
 
 export function partnerNachIds(ids: string[]): Partner[] {
-  const byId = new Map(PARTNER.map((p) => [p.id, p]));
+  const byId = new Map(
+    PARTNER.filter((p) => p.status === "aktiv").map((p) => [p.id, p]),
+  );
   return ids
     .map((id) => byId.get(id))
     .filter((p): p is Partner => p !== undefined);
 }
 
 export function partnerNachTyp(typ: PartnerTyp): Partner[] {
-  return PARTNER.filter((p) => p.typ === typ);
+  return PARTNER.filter((p) => p.typ === typ && p.status === "aktiv");
 }
