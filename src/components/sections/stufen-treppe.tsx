@@ -24,7 +24,7 @@ const STUFEN: Stufe[] = [
     id: "grundfreibetrag",
     betrag: 165,
     titel: "Grundfreibetrag",
-    beschreibung: "Minijob, Zenjob, Clickworker — morgen loslegbar",
+    beschreibung: "Minijob, Zenjob, Clickworker – morgen loslegbar",
     badge: "SOFORT",
     badgeVariante: "teal",
     immerAktiv: true,
@@ -33,7 +33,7 @@ const STUFEN: Stufe[] = [
     id: "uebungsleiter",
     betrag: 275,
     titel: "Übungsleiterpauschale",
-    beschreibung: "Trainer, Co-Trainer, Betreuer — Lizenz nicht immer nötig",
+    beschreibung: "Trainer, Co-Trainer, Betreuer – Lizenz nicht immer nötig",
     badge: "VEREIN",
     badgeVariante: "amber",
     immerAktiv: false,
@@ -42,7 +42,7 @@ const STUFEN: Stufe[] = [
     id: "ehrenamt",
     betrag: 80,
     titel: "Ehrenamtspauschale",
-    beschreibung: "Kassenwart, Vorstand, Platzwart — organisatorische Rolle",
+    beschreibung: "Kassenwart, Vorstand, Platzwart – organisatorische Rolle",
     badge: "ROLLE",
     badgeVariante: "amber",
     immerAktiv: false,
@@ -63,7 +63,7 @@ export function StufenTreppe({ aktivKarten, onToggle }: StufenProps) {
     <div className="mx-auto max-w-xl">
       <div className="rounded-3xl border-2 border-navy-100 bg-white p-6 md:p-8">
         <div className="mb-5 text-center text-xs font-bold uppercase tracking-widest text-navy-500">
-          Dein Freibetrag — zusammenstellen
+          Dein Freibetrag – zusammenstellen
         </div>
 
         <div className="space-y-3">

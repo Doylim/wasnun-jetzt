@@ -26,7 +26,7 @@ export default function BuergergeldPage() {
           In Arbeit
         </Badge>
 
-        <h1 className="mb-4 text-4xl font-black text-navy-900 md:text-5xl">
+        <h1 className="mb-4 text-balance text-4xl font-black text-navy-900 md:text-5xl">
           Bürgergeld – kommt bald
         </h1>
 

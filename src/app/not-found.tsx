@@ -7,7 +7,7 @@ export default function NotFound() {
     <main id="main" className="flex min-h-screen items-center justify-center bg-navy-50 px-4">
       <div className="max-w-md text-center">
         <div className="mb-4 text-7xl font-black text-teal-700">404</div>
-        <h1 className="mb-3 text-3xl font-black text-navy-900">
+        <h1 className="mb-3 text-balance text-3xl font-black text-navy-900">
           Seite nicht gefunden
         </h1>
         <p className="mb-8 text-navy-600">

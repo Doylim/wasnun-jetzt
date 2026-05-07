@@ -6,7 +6,7 @@ import { JourneyPlan } from "./journey-plan";
 import type { KartenId } from "@/lib/journey";
 
 export function Journey() {
-  // Default: nur Grundfreibetrag aktiv — ehrliche 165 EUR als Einstieg
+  // Default: nur Grundfreibetrag aktiv – ehrliche 165 EUR als Einstieg
   const [aktivKarten, setAktivKarten] = useState<Set<string>>(
     () => new Set<string>(["grundfreibetrag"]),
   );
@@ -32,7 +32,7 @@ export function Journey() {
             So viel darfst du neben ALG I verdienen
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-balance text-lg text-navy-600">
-            Ohne Abzug — abhängig davon, was auf dich zutrifft.
+            Ohne Abzug – abhängig davon, was auf dich zutrifft.
           </p>
         </div>
 
