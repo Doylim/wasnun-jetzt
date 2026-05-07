@@ -43,31 +43,45 @@ export function PartnerLink({
 
   if (variant === "inline") {
     return (
-      <a
-        href={partner.url}
-        target="_blank"
-        rel={REL}
-        className={`inline-flex items-center gap-1 font-semibold text-teal-700 underline-offset-2 hover:underline ${className}`}
-      >
-        {label}
-        <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
-        <span className="sr-only">(externer Affiliate-Link, Werbung)</span>
-      </a>
+      <span className={`inline-flex items-center gap-1.5 ${className}`}>
+        <a
+          href={partner.url}
+          target="_blank"
+          rel={REL}
+          className="inline-flex items-center gap-1 font-semibold text-teal-700 underline-offset-2 hover:underline"
+        >
+          {label}
+          <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+        </a>
+        <span
+          aria-label="Werbung – Affiliate-Link"
+          className="inline-flex shrink-0 items-center rounded-full border border-amber-brand/40 bg-amber-brand/10 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-brand"
+        >
+          Werbung
+        </span>
+      </span>
     );
   }
 
   if (variant === "button") {
     return (
-      <a
-        href={partner.url}
-        target="_blank"
-        rel={REL}
-        className={`group inline-flex items-center justify-center gap-2 rounded-full bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-teal-700/25 transition-colors hover:bg-teal-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${className}`}
-      >
-        <span>{label}</span>
-        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-        <span className="sr-only">(externer Affiliate-Link, Werbung)</span>
-      </a>
+      <span className={`inline-flex flex-col items-start gap-1 ${className}`}>
+        <a
+          href={partner.url}
+          target="_blank"
+          rel={REL}
+          className="group inline-flex items-center justify-center gap-2 rounded-full bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-teal-700/25 transition-colors hover:bg-teal-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+        >
+          <span>{label}</span>
+          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+        </a>
+        <span
+          aria-label="Werbung – Affiliate-Link"
+          className="inline-flex items-center rounded-full border border-amber-brand/40 bg-amber-brand/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-brand"
+        >
+          Werbung
+        </span>
+      </span>
     );
   }
 

@@ -60,7 +60,7 @@ export function Faq() {
   return (
     <section
       id="faq"
-      className="scroll-mt-24 border-t border-navy-100 bg-navy-50 py-20 md:py-28"
+      className="scroll-mt-20 border-t border-navy-100 bg-navy-50 py-20 md:scroll-mt-28 md:py-28"
     >
       <Script
         id="ld-faq"

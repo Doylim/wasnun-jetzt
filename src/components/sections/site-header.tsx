@@ -17,7 +17,10 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-navy-100 bg-white/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
+      {/* Feste Hoehe – mobile h-16 (64px), desktop h-20 (80px). Wichtig:
+          niemals padding-basiert, weil sonst der Header zwischen Viewports
+          driftet und das Anker-Sprung-Pattern (scroll-padding-top) bricht. */}
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-6">
         <Link href="/" className="flex h-11 items-center gap-2 font-bold">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-navy-800 text-white">
             <Calculator className="h-5 w-5 text-teal-400" aria-hidden="true" />
@@ -52,30 +55,34 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <div
-        className={cn(
-          "overflow-hidden border-t border-navy-100 bg-white transition-all md:hidden",
-          offen ? "max-h-96" : "max-h-0",
-        )}
-      >
-        <div className="flex flex-col gap-1 p-4">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              onClick={() => setOffen(false)}
-              className="rounded-lg px-4 py-3 text-base font-semibold text-navy-800 hover:bg-navy-50"
-            >
-              {l.label}
-            </Link>
-          ))}
-          <Button variant="primary" className="mt-2" asChild>
-            <a href="/#rechner" onClick={() => setOffen(false)}>
-              In 60 Sek. rechnen
-            </a>
-          </Button>
+      {/* Mobile-Menue als absolutes Overlay UNTER dem Header.
+          Verhindert, dass der Sticky-Header beim Auf-/Zuklappen seine Hoehe
+          aendert und Anker-Spruenge dadurch auf falsche Positionen springen. */}
+      {offen ? (
+        <div
+          className={cn(
+            "absolute inset-x-0 top-full border-t border-navy-100 bg-white shadow-lg shadow-navy-900/5 md:hidden",
+          )}
+        >
+          <div className="flex flex-col gap-1 p-4">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOffen(false)}
+                className="rounded-lg px-4 py-3 text-base font-semibold text-navy-800 hover:bg-navy-50"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Button variant="primary" className="mt-2" asChild>
+              <a href="/#rechner" onClick={() => setOffen(false)}>
+                In 60 Sek. rechnen
+              </a>
+            </Button>
+          </div>
         </div>
-      </div>
+      ) : null}
     </header>
   );
 }

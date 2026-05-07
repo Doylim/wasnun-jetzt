@@ -24,7 +24,7 @@ export function Journey() {
   return (
     <section
       id="rechner"
-      className="scroll-mt-24 border-t border-navy-100 bg-navy-50/40 py-20 md:py-28"
+      className="scroll-mt-20 border-t border-navy-100 bg-navy-50/40 py-20 md:scroll-mt-28 md:py-28"
     >
       <div className="mx-auto max-w-4xl px-4 md:px-6">
         <div className="mb-10 text-center">

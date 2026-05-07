@@ -98,13 +98,14 @@
   }
   html {
     scroll-behavior: smooth;
-    /* Sticky-Header h-16 (mobile) bzw. h-20 (desktop) – Puffer drauf,
-       damit Anker-Sprünge nicht unter dem Header verschwinden. */
+    /* Sticky-Header h-16 (mobile = 64px) bzw. h-20 (desktop = 80px).
+       Puffer drauf, damit Anker-Sprünge nicht unter dem Header verschwinden:
+       mobile 80 - 64 = 16px Puffer, desktop 112 - 80 = 32px Puffer. */
     scroll-padding-top: 5rem;
   }
   @media (min-width: 768px) {
     html {
-      scroll-padding-top: 6rem;
+      scroll-padding-top: 7rem;
     }
   }
   body {
