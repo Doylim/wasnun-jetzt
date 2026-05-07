@@ -14,7 +14,7 @@ export default function DatenschutzPage() {
       <div className="mx-auto max-w-2xl px-4 md:px-6">
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-teal-600 hover:underline"
+          className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:underline"
         >
           <ArrowLeft className="h-4 w-4" />
           Zurück zur Startseite
@@ -33,7 +33,7 @@ export default function DatenschutzPage() {
               E-Mail:{" "}
               <a
                 href={`mailto:${IMPRESSUM.mail}`}
-                className="text-teal-600 hover:underline"
+                className="text-teal-700 hover:underline"
               >
                 {IMPRESSUM.mail}
               </a>
@@ -150,7 +150,7 @@ export default function DatenschutzPage() {
               <br />
               <a
                 href={`mailto:${IMPRESSUM.mail}`}
-                className="text-teal-600 hover:underline"
+                className="text-teal-700 hover:underline"
               >
                 {IMPRESSUM.mail}
               </a>
