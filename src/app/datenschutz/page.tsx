@@ -83,30 +83,20 @@ export default function DatenschutzPage() {
 
           <section>
             <h2 className="mb-2 text-lg font-bold text-navy-900">
-              5. Newsletter und Plan-Versand
+              5. Keine Formulare, keine Mail-Verarbeitung
             </h2>
             <p>
-              Wenn du deinen persönlichen Plan per E-Mail anforderst, speichern
-              wir zusätzlich zur E-Mail-Adresse die freiwillig eingegebenen
-              Rechner-Daten (ALG-I-Betrag, Stunden pro Woche, aktivierte
-              Pauschalen, errechneter Freibetrag) als Kontaktattribute bei
-              unserem Mail-Dienstleister Brevo (Sendinblue SAS, 106 boulevard
-              Haussmann, 75008 Paris, Frankreich). Das erlaubt uns, dir deinen
-              persönlichen Plan zuzusenden und gelegentlich thematisch passende
-              Tipps zu schicken.
-            </p>
-            <p className="mt-3">
-              Wir nutzen ein Double-Opt-in-Verfahren: Nach deiner Anforderung
-              bekommst du eine Bestätigungs-Mail mit einem Link. Erst nach
-              Klick darauf wird deine Adresse in unseren Verteiler aufgenommen
-              und der Plan verschickt.
-            </p>
-            <p className="mt-3">
-              <strong className="text-navy-900">Rechtsgrundlage:</strong>{" "}
-              Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Du kannst die
-              Einwilligung jederzeit widerrufen, indem du auf den Abmelde-Link
-              in jeder Mail klickst. Nach Widerruf werden sowohl deine Adresse
-              als auch die gespeicherten Rechner-Daten aus Brevo gelöscht.
+              Auf WasNun.jetzt gibt es{" "}
+              <strong className="text-navy-900">
+                keine Formulare, keinen Newsletter und keinen Plan-Versand per
+                E-Mail
+              </strong>
+              . Du musst nichts eingeben, um das Angebot zu nutzen. Wenn du uns
+              direkt schreibst (E-Mail an die im Impressum genannte Adresse),
+              verarbeiten wir deine Nachricht ausschließlich zur Beantwortung
+              deiner Anfrage. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO
+              (berechtigtes Interesse) bzw. Art. 6 Abs. 1 lit. b DSGVO bei
+              vertraglichen Anliegen.
             </p>
           </section>
 

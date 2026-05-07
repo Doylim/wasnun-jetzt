@@ -5,10 +5,7 @@ import { LEGAL } from "@/lib/data";
 
 export function Hero() {
   return (
-    <section
-      id="haupt"
-      className="relative overflow-hidden border-b border-navy-100 bg-gradient-to-br from-navy-50 via-white to-teal-50"
-    >
+    <section className="relative overflow-hidden border-b border-navy-100 bg-gradient-to-br from-navy-50 via-white to-teal-50">
       <div className="absolute inset-0 bg-grid-navy opacity-60" aria-hidden="true" />
       <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-teal-200/30 blur-3xl" aria-hidden="true" />
       <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-navy-200/30 blur-3xl" aria-hidden="true" />
