@@ -26,13 +26,13 @@ const PUNKTE = [
 
 export function Trust() {
   return (
-    <section className="border-t border-navy-100 bg-white py-20 md:py-24">
+    <section className="border-t border-navy-100 bg-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="mb-12 text-center">
+        <div className="mb-10 text-center">
           <Badge variant="navy" className="mb-4">
             Warum du uns vertrauen kannst
           </Badge>
-          <h2 className="text-balance text-3xl font-black text-navy-900 md:text-4xl">
+          <h2 className="text-balance text-3xl font-black text-navy-900 md:text-5xl">
             Klar. Rechtssicher. Kostenlos.
           </h2>
         </div>

@@ -19,7 +19,7 @@ export default function DatenschutzPage() {
           <ArrowLeft className="h-4 w-4" />
           Zurück zur Startseite
         </Link>
-        <h1 className="mb-8 text-4xl font-black text-navy-900">
+        <h1 className="mb-8 text-4xl font-black text-navy-900 md:text-5xl">
           Datenschutzerklärung
         </h1>
         <div className="space-y-6 rounded-3xl border border-navy-100 bg-white p-8 text-sm leading-relaxed text-navy-700 shadow-sm">

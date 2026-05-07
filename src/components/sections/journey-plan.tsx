@@ -27,7 +27,7 @@ export function JourneyPlan({ aktivKarten }: Props) {
   if (aktiveSchritte.length === 0) return null;
 
   return (
-    <div className="rounded-3xl border border-navy-100 bg-white p-6 md:p-10">
+    <div className="rounded-3xl border border-navy-100 bg-white p-6 shadow-sm md:p-10">
       <div className="mb-3 text-sm font-bold uppercase tracking-wide text-navy-500">
         So startest du
       </div>
