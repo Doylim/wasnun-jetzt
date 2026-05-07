@@ -1,24 +1,48 @@
 import { Phone } from "lucide-react";
 import type { JourneyKarte } from "@/lib/journey";
 import { JOURNEY_KARTEN } from "@/lib/journey";
+import { partnerNachIds } from "@/lib/partner";
+import { PartnerLink } from "@/components/partner-link";
 
 type Props = {
   aktivKarten: Set<string>;
 };
 
+/**
+ * Schrittbeschreibungen sind bewusst plattform-frei formuliert –
+ * konkrete Anbieter werden ausschliesslich aus partner.ts (status="aktiv")
+ * via <PartnerLink> ausgespielt. Damit ist der Werbe-Hinweis (§ 6 TMG)
+ * automatisch gesetzt und ein "geplant"-Partner kann nicht versehentlich
+ * im Klartext stehen bleiben.
+ */
 function schrittText(karte: JourneyKarte): string {
   switch (karte.id) {
     case "grundfreibetrag":
-      return "165 EUR Grundfreibetrag – melde dich bei einer der Minijob-Plattformen an (Zenjob, Coople, Clickworker). Ca. 11–12 Std./Monat sind sicher.";
+      return "165 EUR Grundfreibetrag – such dir 1–2 Mikrojob- oder Schicht-Plattformen aus den Empfehlungen unten. Ca. 11–12 Std./Monat sind sicher.";
     case "uebungsleiter":
-      return "275 EUR Übungsleiterpauschale – suche einen gemeinnützigen Verein in deiner Stadt über BAGFA. Ohne Lizenz: C-Trainer-Kurs mit Bildungsgutschein beantragen.";
+      return "275 EUR Übungsleiterpauschale – such einen gemeinnützigen Verein in deiner Stadt über die Empfehlungen unten. Ohne Lizenz: C-Trainer-Kurs mit Bildungsgutschein beantragen.";
     case "ehrenamt":
       return "80 EUR Ehrenamtspauschale – frag bei deiner lokalen Freiwilligenagentur nach administrativen Rollen (Vorstand, Kassenwart, Platzwart).";
     case "passiv":
-      return "Passive Einkommen – prüfe Vermietung (Zimmer via WG-Gesucht) und Tagesgeld-Vergleich. Beides wird bei ALG I NICHT angerechnet.";
+      return "Passive Einkommen – prüfe Vermietung (Zimmer) und Tagesgeld-Vergleich. Beides wird bei ALG I NICHT angerechnet.";
     default:
       return "";
   }
+}
+
+function partnerListeFuerKarte(karte: JourneyKarte) {
+  // Bei "passiv" ggf. mehrere Unterabschnitte – ansonsten flach.
+  if (karte.unterabschnitte && karte.unterabschnitte.length > 0) {
+    return karte.unterabschnitte
+      .map((u) => ({
+        titel: u.titel,
+        partner: partnerNachIds(u.partnerIds),
+      }))
+      .filter((g) => g.partner.length > 0);
+  }
+  const partner = partnerNachIds(karte.partnerIds);
+  if (partner.length === 0) return [];
+  return [{ titel: "", partner }];
 }
 
 export function JourneyPlan({ aktivKarten }: Props) {
@@ -32,19 +56,46 @@ export function JourneyPlan({ aktivKarten }: Props) {
         So startest du
       </div>
       <ol className="space-y-3">
-        {aktiveSchritte.map((karte, i) => (
-          <li
-            key={karte.id}
-            className="flex items-start gap-3 rounded-2xl border border-navy-100 bg-navy-50/40 p-4"
-          >
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal-500 text-sm font-black text-white">
-              {i + 1}
-            </div>
-            <div className="text-sm leading-relaxed text-navy-700">
-              {schrittText(karte)}
-            </div>
-          </li>
-        ))}
+        {aktiveSchritte.map((karte, i) => {
+          const gruppen = partnerListeFuerKarte(karte);
+          return (
+            <li
+              key={karte.id}
+              className="flex items-start gap-3 rounded-2xl border border-navy-100 bg-navy-50/40 p-4"
+            >
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal-500 text-sm font-black text-white">
+                {i + 1}
+              </div>
+              <div className="flex-1">
+                <p className="text-sm leading-relaxed text-navy-700">
+                  {schrittText(karte)}
+                </p>
+                {gruppen.length > 0 ? (
+                  <div className="mt-3 space-y-2">
+                    {gruppen.map((g, idx) => (
+                      <div key={idx}>
+                        {g.titel ? (
+                          <div className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-navy-500">
+                            {g.titel}
+                          </div>
+                        ) : null}
+                        <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+                          {g.partner.map((p) => (
+                            <PartnerLink
+                              key={p.id}
+                              partner={p}
+                              variant="inline"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </li>
+          );
+        })}
       </ol>
 
       <div className="mt-6 flex items-start gap-3 rounded-2xl border-2 border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
