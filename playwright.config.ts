@@ -36,4 +36,21 @@ export default defineConfig({
       use: { ...devices["Pixel 5"] },
     },
   ],
+  // Auto-Start des Production-Servers, falls noch keiner laeuft.
+  // - reuseExistingServer: nutzt bereits laufende Instanz (npm run start oder dev)
+  // - command "npm run start": konsistente, gemessene Variante – Lighthouse misst
+  //   ebenfalls den Production-Build, damit Playwright und Lighthouse identisch
+  //   urteilen
+  // - Production-Build muss vorher per "npm run build" erzeugt sein, sonst bricht
+  //   "next start" ab. Stress-Tester-Agent baut bei Bedarf vorher.
+  webServer: process.env.TEST_BASE_URL
+    ? undefined
+    : {
+        command: "npm run start",
+        url: "http://localhost:3000",
+        reuseExistingServer: true,
+        timeout: 120_000,
+        stdout: "ignore",
+        stderr: "pipe",
+      },
 });
