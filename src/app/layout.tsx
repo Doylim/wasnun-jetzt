@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/constants";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
+import { ConsentProvider } from "@/lib/consent";
+import { CookieBanner } from "@/components/cookie-banner";
 import "./globals.css";
 
 const inter = Inter({
@@ -62,7 +64,10 @@ export default function RootLayout({
         >
           Zum Hauptinhalt springen
         </a>
-        {children}
+        <ConsentProvider>
+          {children}
+          <CookieBanner />
+        </ConsentProvider>
         <Script
           id="ld-organization"
           type="application/ld+json"

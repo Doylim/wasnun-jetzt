@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Calculator } from "lucide-react";
+import { CookieSettingsButton } from "@/components/cookie-settings-button";
 
 export function SiteFooter() {
   return (
@@ -58,6 +59,9 @@ export function SiteFooter() {
                 <Link href="/datenschutz" className="text-navy-200 hover:text-teal-400">
                   Datenschutz
                 </Link>
+              </li>
+              <li>
+                <CookieSettingsButton variant="footer" />
               </li>
               <li>
                 <a

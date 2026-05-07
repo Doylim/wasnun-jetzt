@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import { IMPRESSUM } from "@/lib/data";
+import { CookieSettingsButton } from "@/components/cookie-settings-button";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung",
@@ -195,28 +196,59 @@ export default function DatenschutzPage() {
             </p>
           </section>
 
-          {/* 5. Cookies */}
+          {/* 5. Cookies und Speichertechniken */}
           <section>
-            <h2 className="mb-2 text-lg font-bold text-navy-900">5. Cookies</h2>
+            <h2 className="mb-2 text-lg font-bold text-navy-900">
+              5. Cookies und Speichertechniken
+            </h2>
             <p>
-              Wir setzen{" "}
-              <strong className="text-navy-900">
-                aktuell keine Analyse-, Marketing- oder Tracking-Cookies
-              </strong>
-              . Es können ausschließlich technisch notwendige Cookies oder
-              vergleichbare Speichertechniken verwendet werden, die für den
-              Betrieb der Webseite zwingend erforderlich sind (z. B. zum
-              Erhalt einer sicheren Verbindung). Eine Einwilligung ist hierfür
-              nach <strong>§ 25 Abs. 2 Nr. 2 TDDDG</strong> nicht
-              erforderlich.
+              Wir verwenden Cookies und vergleichbare Speichertechniken
+              (insbesondere{" "}
+              <code className="rounded bg-navy-50 px-1 py-0.5 text-xs">
+                localStorage
+              </code>
+              ) nur in dem Umfang, in den du eingewilligt hast. Wir
+              unterscheiden drei Kategorien:
             </p>
-            <p className="mt-2">
-              Sollten in Zukunft optionale Cookies (z. B. für
-              reichweitenmessende Statistik oder externe Inhalte) hinzukommen,
-              werden diese ausschließlich nach deiner aktiven Einwilligung
-              über einen Cookie-Banner gesetzt. Diese Datenschutzerklärung
-              wird in dem Fall entsprechend ergänzt.
+            <ul className="ml-5 mt-2 list-disc space-y-1">
+              <li>
+                <strong className="text-navy-900">Notwendig</strong> – immer
+                aktiv. Speichert ausschließlich deine Cookie-Entscheidung
+                (Schlüssel{" "}
+                <code className="rounded bg-navy-50 px-1 py-0.5 text-xs">
+                  wasnun-consent-v1
+                </code>
+                ) und technisch zwingende Sitzungsinformationen.
+                Rechtsgrundlage: § 25 Abs. 2 Nr. 2 TDDDG i. V. m. Art. 6 Abs.
+                1 lit. f DSGVO.
+              </li>
+              <li>
+                <strong className="text-navy-900">Analyse</strong> – aktuell{" "}
+                <strong>nicht aktiv geschaltet</strong>. Vorgesehen für
+                anonyme Reichweitenmessung (z. B. Plausible, Vercel
+                Analytics). Wird erst nach deiner Einwilligung geladen.
+                Rechtsgrundlage: § 25 Abs. 1 TDDDG i. V. m. Art. 6 Abs. 1 lit.
+                a DSGVO.
+              </li>
+              <li>
+                <strong className="text-navy-900">
+                  Marketing & externe Inhalte
+                </strong>{" "}
+                – aktuell <strong>nicht aktiv geschaltet</strong>. Vorgesehen
+                für Affiliate-Tracking-Pixel und eingebettete Drittanbieter-
+                Vorschauen. Wird erst nach deiner Einwilligung geladen.
+                Rechtsgrundlage: § 25 Abs. 1 TDDDG i. V. m. Art. 6 Abs. 1 lit.
+                a DSGVO.
+              </li>
+            </ul>
+            <p className="mt-3">
+              Du kannst deine Einwilligung jederzeit mit Wirkung für die
+              Zukunft widerrufen oder anpassen – entweder über den Footer-Link{" "}
+              <strong>Cookie-Einstellungen</strong> oder direkt hier:
             </p>
+            <div className="mt-4">
+              <CookieSettingsButton />
+            </div>
           </section>
 
           {/* 6. Schriftarten und CDN */}

@@ -35,6 +35,17 @@
   --color-cream: #faf8f4;
 }
 
+/* Cookie-Banner-Brand – Mapping auf das Teal-System.
+   Pflicht-Schnittstelle der seivio-Banner-Vorlage:
+   --brand        = Akzentfarbe (Pill-Dot, Toggle-Aktiv, Akzeptieren-Button)
+   --brand-hover  = Hover-Variante
+   --brand-soft   = sehr helle Flaeche (Icon-Backgrounds in Kategorien) */
+:root {
+  --brand: #00755f;
+  --brand-hover: #015946;
+  --brand-soft: #e6fbf7;
+}
+
 /* shadcn/ui Design-Tokens */
 :root {
   --background: 0 0% 100%;
