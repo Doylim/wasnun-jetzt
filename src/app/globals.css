@@ -87,6 +87,14 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Sticky-Header h-16 (mobile) bzw. h-20 (desktop) – Puffer drauf,
+       damit Anker-Sprünge nicht unter dem Header verschwinden. */
+    scroll-padding-top: 5rem;
+  }
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 6rem;
+    }
   }
   body {
     background-color: hsl(var(--background));

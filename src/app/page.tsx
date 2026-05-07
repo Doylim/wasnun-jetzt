@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="main">
         <Hero />
         <Journey />
         <Faq />

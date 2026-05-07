@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function BuergergeldPage() {
   return (
-    <main className="min-h-screen bg-navy-50/40 py-20">
+    <main id="main" className="min-h-screen bg-navy-50/40 py-20">
       <div className="mx-auto max-w-2xl px-4 md:px-6">
         <Link
           href="/"

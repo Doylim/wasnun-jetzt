@@ -27,21 +27,18 @@ export function SiteFooter() {
             </div>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#rechner" className="text-navy-200 hover:text-teal-400">
+                <a href="/#rechner" className="text-navy-200 hover:text-teal-400">
                   Freibetrag-Rechner
                 </a>
               </li>
               <li>
-                <a
-                  href="#entscheiden"
-                  className="text-navy-200 hover:text-teal-400"
-                >
-                  Verdienst-Finder
+                <a href="/#faq" className="text-navy-200 hover:text-teal-400">
+                  FAQ
                 </a>
               </li>
               <li>
-                <a href="#faq" className="text-navy-200 hover:text-teal-400">
-                  FAQ
+                <a href="/buergergeld" className="text-navy-200 hover:text-teal-400">
+                  Bürgergeld (in Arbeit)
                 </a>
               </li>
             </ul>

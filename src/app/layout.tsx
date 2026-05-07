@@ -57,7 +57,7 @@ export default function RootLayout({
     <html lang="de" className={inter.variable}>
       <body className="min-h-screen bg-white font-sans text-navy-900 antialiased">
         <a
-          href="#haupt"
+          href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-navy-800 focus:px-4 focus:py-2 focus:text-white"
         >
           Zum Hauptinhalt springen
