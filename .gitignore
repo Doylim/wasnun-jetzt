@@ -33,8 +33,10 @@ yarn-error.log*
 # superpowers visual-companion (brainstorming-mockups)
 .superpowers/
 
-# claude code local state (per-developer permissions, scheduled task locks)
-.claude/
+# claude code: lokalen Zustand ignorieren, verteilte Regeln/Skills versionieren
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/worktrees/
 
 # typescript
 *.tsbuildinfo
