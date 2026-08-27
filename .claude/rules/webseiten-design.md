@@ -50,6 +50,40 @@ zufälligen Tailwind-Defaults. Immer via `@theme` in `globals.css` definieren.
 - **Text-Größen:** Tailwind Defaults nutzen (`text-sm`, `text-base`, `text-xl`…)
 - Große Headlines: `text-3xl md:text-5xl lg:text-6xl font-black` als Default-Pattern
 
+### Fluid Typography für Headlines
+
+Für Hero- und Section-Headlines darf statt der Breakpoint-Staffel eine fließende
+Größe stehen. Das master-template liefert dafür `.text-fluid-xl`, `-lg`, `-md`
+und `-base` in `globals.css` mit:
+
+```css
+.text-fluid-xl { font-size: clamp(2rem, 5vw + 1rem, 4rem); line-height: 1.1; }
+```
+
+Beides ist erlaubt. Fließend nimmt Zwischengrößen sauber mit, die Staffel ist
+leichter vorherzusagen. **Nicht mischen innerhalb einer Seite.**
+
+### Dark Mode (Pflicht)
+
+Jedes Projekt kann dunkel. Umgesetzt über die Klasse `dark` am `<html>`, nicht
+über `prefers-color-scheme` allein — sonst kann der Nutzer nicht umschalten.
+
+- Farben **ausschließlich** über CSS-Variablen, nie hart im Markup. `:root` ist
+  hell, `.dark` überschreibt dieselben Variablen dunkel.
+- `@custom-variant dark (&:is(.dark *));` in `globals.css`, damit Tailwinds
+  `dark:`-Präfix auf die Klasse hört.
+- **Gegen das Aufblitzen des hellen Modus:** ein `<script>` mit
+  `strategy="beforeInteractive"` im Root-Layout setzt die Klasse aus
+  `localStorage` bzw. der System-Präferenz, BEVOR gerendert wird.
+- Der Umschalter liest den Zustand über `useSyncExternalStore` direkt von der
+  `dark`-Klasse — nicht per `useState` + `useEffect` spiegeln, das meldet
+  `react-hooks/set-state-in-effect` zu Recht.
+- Dunkel ist nicht „hell invertiert": Kontraste einzeln prüfen, die Akzentfarbe
+  braucht auf dunklem Grund meist einen helleren Ton.
+
+Referenz-Implementierung: `webseiten\master-template` (`globals.css`,
+`layout.tsx`, `components/dark-mode-toggle.tsx`).
+
 ### Radius/Spacing
 
 - `rounded-xl` für Form-Inputs
@@ -77,6 +111,34 @@ Größen: `sm`, `default`, `lg`, `xl`, `icon`.
 - `shadow-xl` nur für Hero-Highlights
 - Immer mit Farbkomponente: `shadow-lg shadow-navy-800/20`
 
+### Container Queries statt Media Queries für Komponenten
+
+Media Queries fragen den Bildschirm, Container Queries den Platz, den die
+Komponente tatsächlich hat. Eine Karte in der Sidebar ist schmal, obwohl der
+Bildschirm breit ist — nur die Container Query merkt das.
+
+```css
+.karten-raster { container-type: inline-size; container-name: karte; }
+
+@container karte (min-width: 400px) {
+  .karte-inhalt { display: flex; gap: 1rem; }
+}
+```
+
+**Faustregel:** Seitenlayout → Media Query. Wiederverwendbare Komponente, die an
+mehreren Stellen unterschiedlich breit steht → Container Query.
+
+### View Transitions für Seitenwechsel (optional)
+
+```css
+::view-transition-old(root) { animation: 300ms ease-out fade-out; }
+::view-transition-new(root) { animation: 300ms ease-in fade-in; }
+```
+
+Nur einsetzen, wenn der Übergang etwas erklärt (Liste → Detail). Ein Fade auf
+jedem Klick ist Selbstzweck und verlangsamt gefühlt. `prefers-reduced-motion`
+respektieren.
+
 ---
 
 ---
@@ -92,5 +154,8 @@ Größen: `sm`, `default`, `lg`, `xl`, `icon`.
 - **Buttons vs Links:** `<button>` für Aktionen, `<a>` für Navigation
 - **Form-Labels:** Jedes Input hat ein `<label>` (oder `aria-label`)
 - **Tastatur-Navigation:** Jede Funktion muss ohne Maus bedienbar sein
+- **Klickfläche:** mindestens 44 × 44 px auf Touch-Geräten (`min-w-[44px] min-h-[44px]`)
+- **Bewegung:** `@media (prefers-reduced-motion: reduce)` deaktiviert Animationen
+  und `scroll-behavior: smooth`
 
 ---
