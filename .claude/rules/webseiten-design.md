@@ -104,6 +104,26 @@ Drei Varianten sind Pflicht in `components/ui/button.tsx`:
 
 Größen: `sm`, `default`, `lg`, `xl`, `icon`.
 
+### Admin-UI: Texte ohne Gedankenstriche
+
+In Admin-Bereichen (Oberfläche, Fehlertexte, Mails, PDFs, Hilfetexte) steht
+**kein Gedankenstrich** („—" U+2014, „–" U+2013) in sichtbarem Text. Statt
+„Meldung gespeichert — du kannst sie noch ändern" heißt es „Meldung gespeichert.
+Du kannst sie noch ändern." Ersatz je nach Satz: Punkt, Komma, Doppelpunkt,
+Klammer oder zwei Sätze. Ein leeres Tabellenfeld bleibt leer oder trägt „keine",
+nicht „—".
+
+**Warum (Norbert, 2026-09-06, fight-evolution S102):** Der Admin-Bereich war
+über hundert Sessions konsequent ohne Gedankenstriche geschrieben; die Neubauten
+eines einzigen Tages (`/admin/stunden`, Zugänge, Neuigkeiten, Stunden-Mails und
+-PDFs) brachten sie dutzendfach zurück. Gehäufte Gedankenstriche lesen sich
+als KI-generiert und brechen den Ton, den die Bestandsseiten haben. Der
+Bis-Strich in Zeitspannen bleibt davon unberührt, wenn das Projekt ihn schon
+verwendet („18:00–19:30 Uhr"); im Zweifel „bis".
+
+Prüfung vor dem Commit: `grep -rn "—\|–" src/app/admin src/components/admin src/lib/email`
+über die geänderten Dateien; jede Fundstelle in sichtbarem Text wird ersetzt.
+
 ### Shadows
 
 - `shadow-sm` für Cards
