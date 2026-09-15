@@ -103,6 +103,38 @@ In jedem anderen Fall: `git push`.
 Muss `.vercel` enthalten (das lokale Link-Verzeichnis), aber **nicht**
 die `.github/` Ordner – Workflows können später dazukommen.
 
+### Vercel-Hobby-Limits: Deployments kosten Speicher (Pflicht)
+
+Alle Projekte teilen sich **ein** Hobby-Team. Jedes gespeicherte Deployment
+belegt „Functions Storage" (10 GB frei, teamweit). Am 15.09.2026 war das
+Limit voll: fight-evolution-web hielt 138 Deployments (6,8 GB), enhanced-games
+packte 115 MB Bilder in jede Seiten-Funktion. Deshalb gilt für **jedes**
+Vercel-Projekt:
+
+1. **Ignored Build Step setzen.** Vorlage
+   `_fundament/templates/vercel/vercel-build-noetig.sh` nach `scripts/`
+   kopieren und in `vercel.json` eintragen:
+   ```json
+   "ignoreCommand": "bash scripts/vercel-build-noetig.sh protokolle docs"
+   ```
+   Überspringt Dependabot-Branches und Pushes, die seit dem letzten
+   Deployment nur die genannten Pfade ändern. `'*.md'` nur ergänzen, wenn das
+   Projekt zur Laufzeit garantiert keine `.md` liest (Content-Loader prüfen!).
+2. **Dependabot-PRs in GitHub Actions prüfen** (`ci.yml` mit `tsc`, Tests,
+   Build), nicht über Vercel-Vorschauen.
+3. **Dateien, die per `process.cwd()` gelesen werden, ziehen beim Tracing
+   gern das halbe Projekt mit.** Nach dem ersten Build die Größe prüfen:
+   `.next/server/app/**/page.js.nft.json`. Liegt eine Seite über ~20 MB,
+   `outputFileTracingExcludes` für `public/`, Testberichte und Doku setzen.
+4. **Aufbewahrung kurz halten:** Team Settings → Security & Privacy →
+   Deployment Retention Policy (Vorschau 3 Tage, Production 7 Tage,
+   Abgebrochen/Fehler 1 Tag). Die letzten 20 Production-Deployments bleiben
+   trotzdem für Rollbacks erhalten.
+5. **Offene Pull-Requests nicht liegen lassen** — die neueste Vorschau jedes
+   offenen PRs löscht Vercel nie.
+
+Der Wartungslauf (`_fundament/projekt-check.mjs`) prüft Punkt 1 und 3.
+
 ---
 
 ---
