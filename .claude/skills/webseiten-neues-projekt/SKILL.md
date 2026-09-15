@@ -1,6 +1,6 @@
 ---
 name: webseiten-neues-projekt
-description: Ein neues Webseiten-Projekt unter C:\Projekte\webseiten aufsetzen: Scaffolding-Befehl, verbindliche Ordnerstruktur und die projekteigene CLAUDE.md. Nutze diesen Skill beim Anlegen eines neuen Projekts oder wenn die Ordnerstruktur eines bestehenden Projekts geprueft werden soll.
+description: 'Ein neues Webseiten-Projekt unter C:\Projekte\webseiten aufsetzen: Scaffolding-Befehl, verbindliche Ordnerstruktur und die projekteigene CLAUDE.md. Nutze diesen Skill beim Anlegen eines neuen Projekts oder wenn die Ordnerstruktur eines bestehenden Projekts geprueft werden soll.'
 ---
 
 <!-- ERZEUGT aus _fundament/skills-master/webseiten-neues-projekt/SKILL.md - nicht hier bearbeiten.

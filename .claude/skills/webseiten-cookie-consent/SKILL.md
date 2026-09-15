@@ -1,6 +1,6 @@
 ---
 name: webseiten-cookie-consent
-description: Cookie-Banner und Consent-Management fuer Webseiten-Projekte: Pflichtanforderungen, Referenz-Implementation und was beim Uebernehmen in ein neues Projekt angepasst werden muss. Nutze diesen Skill bei Cookie-Banner, Consent, Tracking-Einwilligung oder DSGVO-Bannerfragen.
+description: 'Cookie-Banner und Consent-Management fuer Webseiten-Projekte: Pflichtanforderungen, Referenz-Implementation und was beim Uebernehmen in ein neues Projekt angepasst werden muss. Nutze diesen Skill bei Cookie-Banner, Consent, Tracking-Einwilligung oder DSGVO-Bannerfragen.'
 ---
 
 <!-- ERZEUGT aus _fundament/skills-master/webseiten-cookie-consent/SKILL.md - nicht hier bearbeiten.
