@@ -41,7 +41,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Button variant="primary" size="sm" asChild>
-            <a href="/#rechner">In 60 Sek. rechnen</a>
+            <Link href="/#rechner">In 60 Sek. rechnen</Link>
           </Button>
         </nav>
 
@@ -76,9 +76,9 @@ export function SiteHeader() {
               </Link>
             ))}
             <Button variant="primary" className="mt-2" asChild>
-              <a href="/#rechner" onClick={() => setOffen(false)}>
+              <Link href="/#rechner" onClick={() => setOffen(false)}>
                 In 60 Sek. rechnen
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

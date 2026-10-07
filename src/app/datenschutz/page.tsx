@@ -146,7 +146,7 @@ export default function DatenschutzPage() {
             <p>
               Diese Webseite wird gehostet bei{" "}
               <strong className="text-navy-900">Vercel Inc.</strong>, 340 Pine
-              Street, Suite 500, San Francisco, CA 94104, USA („Vercel"). Beim
+              Street, Suite 500, San Francisco, CA 94104, USA („Vercel&ldquo;). Beim
               Aufruf jeder Seite werden – wie bei jeder Webseite üblich –
               technische Verbindungsdaten in Server-Logs erfasst. Im Einzelnen
               sind das:
@@ -257,7 +257,7 @@ export default function DatenschutzPage() {
               6. Schriftarten (selbst gehostet)
             </h2>
             <p>
-              Wir verwenden die Schriftart „Inter" über das Next.js-Modul
+              Wir verwenden die Schriftart „Inter&ldquo; über das Next.js-Modul
               <code className="mx-1 rounded bg-navy-50 px-1 py-0.5 text-xs">
                 next/font/google
               </code>
@@ -326,10 +326,10 @@ export default function DatenschutzPage() {
                 aktuell sind jedoch keine Affiliate-Partner aktiv geschaltet
               </strong>
               . Sobald wir mit Partnern zusammenarbeiten, werden die
-              entsprechenden Links sichtbar als „Werbung" gekennzeichnet und
+              entsprechenden Links sichtbar als „Werbung&ldquo; gekennzeichnet und
               mit den Attributen{" "}
               <code className="rounded bg-navy-50 px-1 py-0.5 text-xs">
-                rel="sponsored noopener noreferrer"
+                rel=&quot;sponsored noopener noreferrer&quot;
               </code>{" "}
               versehen. Wenn du dich über einen solchen Link bei einem
               Anbieter registrierst oder etwas abschließt, erhalten wir ggf.
@@ -372,7 +372,7 @@ export default function DatenschutzPage() {
                 <strong className="text-navy-900">
                   Recht auf Löschung (Art. 17 DSGVO)
                 </strong>{" "}
-                – „Recht auf Vergessenwerden"
+                – „Recht auf Vergessenwerden&ldquo;
               </li>
               <li>
                 <strong className="text-navy-900">

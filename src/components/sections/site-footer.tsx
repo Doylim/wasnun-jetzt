@@ -28,14 +28,14 @@ export function SiteFooter() {
             </div>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/#rechner" className="text-navy-200 hover:text-teal-400">
+                <Link href="/#rechner" className="text-navy-200 hover:text-teal-400">
                   Freibetrag-Rechner
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#faq" className="text-navy-200 hover:text-teal-400">
+                <Link href="/#faq" className="text-navy-200 hover:text-teal-400">
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="/buergergeld" className="text-navy-200 hover:text-teal-400">
