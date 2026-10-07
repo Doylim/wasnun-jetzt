@@ -4,9 +4,9 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
 } from "react";
 
 /**
@@ -57,15 +57,30 @@ type StoredShape = {
   marketing?: unknown;
 };
 
-function readStored():
-  | { decision: "decided"; categories: ConsentCategories }
-  | { decision: "pending"; categories: ConsentCategories } {
-  if (typeof window === "undefined") {
-    return { decision: "pending", categories: DEFAULT_CATEGORIES };
-  }
+type Gespeichert = {
+  decision: Decision;
+  categories: ConsentCategories;
+};
+
+const NICHT_ENTSCHIEDEN: Gespeichert = {
+  decision: "pending",
+  categories: DEFAULT_CATEGORIES,
+};
+
+/** Rohwert aus localStorage (null = nichts gespeichert oder nicht lesbar). */
+function readRaw(): string | null {
+  if (typeof window === "undefined") return null;
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { decision: "pending", categories: DEFAULT_CATEGORIES };
+    return window.localStorage.getItem(STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+/** Rohwert -> Entscheidung. Alles Unlesbare = nicht entschieden, nichts eingewilligt. */
+function parseStored(raw: string | null): Gespeichert {
+  if (!raw) return NICHT_ENTSCHIEDEN;
+  try {
     const parsed = JSON.parse(raw) as StoredShape;
     return {
       decision: "decided",
@@ -76,99 +91,119 @@ function readStored():
       },
     };
   } catch {
-    return { decision: "pending", categories: DEFAULT_CATEGORIES };
+    return NICHT_ENTSCHIEDEN;
   }
 }
 
-function writeStored(categories: ConsentCategories) {
-  if (typeof window === "undefined") return;
-  try {
-    const payload = {
-      analytics: categories.analytics,
-      marketing: categories.marketing,
-      ts: Date.now(),
-    };
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-  } catch {
-    // localStorage evtl. deaktiviert (Privatmodus) – Banner erscheint dann jedes Mal neu
-  }
+function toRaw(categories: ConsentCategories): string {
+  return JSON.stringify({
+    analytics: categories.analytics,
+    marketing: categories.marketing,
+    ts: Date.now(),
+  });
 }
 
-function clearStored() {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.removeItem(STORAGE_KEY);
-  } catch {
-    // ignore
+/**
+ * Kleiner Speicher fuer `useSyncExternalStore`: liest localStorage und haelt
+ * einen Merker im Arbeitsspeicher, falls Schreiben/Loeschen scheitert
+ * (Privatmodus) – dann gilt die Entscheidung trotzdem fuer diese Sitzung,
+ * der Banner erscheint beim naechsten Laden wieder.
+ */
+function createConsentStore() {
+  const listeners = new Set<() => void>();
+  // undefined = kein Merker, localStorage ist massgeblich
+  let merker: { raw: string | null } | undefined;
+
+  function melden() {
+    listeners.forEach((l) => l());
   }
+
+  return {
+    subscribe(listener: () => void) {
+      listeners.add(listener);
+      // Synchronisation zwischen Tabs
+      function onStorage(event: StorageEvent) {
+        if (event.key !== STORAGE_KEY) return;
+        merker = undefined;
+        listener();
+      }
+      window.addEventListener("storage", onStorage);
+      return () => {
+        listeners.delete(listener);
+        window.removeEventListener("storage", onStorage);
+      };
+    },
+    getSnapshot(): string | null {
+      return merker ? merker.raw : readRaw();
+    },
+    schreiben(categories: ConsentCategories) {
+      const raw = toRaw(categories);
+      try {
+        window.localStorage.setItem(STORAGE_KEY, raw);
+        merker = undefined;
+      } catch {
+        // localStorage evtl. deaktiviert (Privatmodus) – Banner erscheint dann jedes Mal neu
+        merker = { raw };
+      }
+      melden();
+    },
+    loeschen() {
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+        merker = undefined;
+      } catch {
+        merker = { raw: null };
+      }
+      melden();
+    },
+  };
 }
+
+const nichtsAbonnieren = () => () => {};
+const istHydriert = () => true;
+const nochNichtHydriert = () => false;
 
 export function ConsentProvider({ children }: { children: React.ReactNode }) {
-  const [decision, setDecision] = useState<Decision>("pending");
-  const [categories, setCategories] =
-    useState<ConsentCategories>(DEFAULT_CATEGORIES);
-  const [hydrated, setHydrated] = useState(false);
+  const [store] = useState(createConsentStore);
 
-  useEffect(() => {
-    const next = readStored();
-    setDecision(next.decision);
-    setCategories(next.categories);
-    setHydrated(true);
-  }, []);
+  // Server-Snapshot = sicherer Standard (nicht entschieden, nichts eingewilligt).
+  // Im Browser liefert React nach der Hydration den echten localStorage-Wert.
+  const raw = useSyncExternalStore(
+    store.subscribe,
+    store.getSnapshot,
+    () => null,
+  );
+  const { decision, categories } = useMemo(() => parseStored(raw), [raw]);
 
-  // Synchronisation zwischen Tabs
-  useEffect(() => {
-    function onStorage(event: StorageEvent) {
-      if (event.key !== STORAGE_KEY) return;
-      const next = readStored();
-      setDecision(next.decision);
-      setCategories(next.categories);
-    }
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
+  // true erst nach Hydration (Server und Hydration-Durchlauf: false)
+  const hydrated = useSyncExternalStore(
+    nichtsAbonnieren,
+    istHydriert,
+    nochNichtHydriert,
+  );
 
   const acceptAll = useCallback(() => {
-    const next: ConsentCategories = {
-      necessary: true,
-      analytics: true,
-      marketing: true,
-    };
-    writeStored(next);
-    setCategories(next);
-    setDecision("decided");
-  }, []);
+    store.schreiben({ necessary: true, analytics: true, marketing: true });
+  }, [store]);
 
   const rejectAll = useCallback(() => {
-    const next: ConsentCategories = {
-      necessary: true,
-      analytics: false,
-      marketing: false,
-    };
-    writeStored(next);
-    setCategories(next);
-    setDecision("decided");
-  }, []);
+    store.schreiben({ necessary: true, analytics: false, marketing: false });
+  }, [store]);
 
   const save = useCallback(
     (partial: Partial<Omit<ConsentCategories, "necessary">>) => {
-      const next: ConsentCategories = {
+      store.schreiben({
         necessary: true,
         analytics: partial.analytics ?? categories.analytics,
         marketing: partial.marketing ?? categories.marketing,
-      };
-      writeStored(next);
-      setCategories(next);
-      setDecision("decided");
+      });
     },
-    [categories.analytics, categories.marketing],
+    [store, categories.analytics, categories.marketing],
   );
 
   const reset = useCallback(() => {
-    clearStored();
-    setCategories(DEFAULT_CATEGORIES);
-    setDecision("pending");
-  }, []);
+    store.loeschen();
+  }, [store]);
 
   const value = useMemo<ConsentContextValue>(
     () => ({
