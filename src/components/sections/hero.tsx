@@ -1,4 +1,4 @@
-import { ArrowRight, AlertTriangle, Lock, ShieldCheck, Clock } from "lucide-react";
+import { ArrowRight, TriangleAlert, Lock, ShieldCheck, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { LEGAL } from "@/lib/data";
@@ -42,7 +42,7 @@ export function Hero() {
               role="note"
               className="mb-8 flex items-start gap-3 rounded-2xl border-2 border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
             >
-              <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden="true" />
+              <TriangleAlert className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden="true" />
               <div>
                 <strong>Der einzige Haken:</strong> maximal 14 Std. 59 Min. pro
                 Woche arbeiten. Bei 15 Stunden oder mehr verlierst du den

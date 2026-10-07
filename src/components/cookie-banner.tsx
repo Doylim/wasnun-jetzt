@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Shield,
-  BarChart3,
+  ChartColumn,
   Megaphone,
   Settings2,
   ChevronDown,
@@ -150,7 +150,7 @@ export function CookieBanner() {
                 locked
               />
               <CategoryRow
-                icon={<BarChart3 className="h-4 w-4" />}
+                icon={<ChartColumn className="h-4 w-4" />}
                 title="Analyse"
                 description="Anonyme Reichweitenmessung. Keine Profile."
                 checked={auswahl.analytics}

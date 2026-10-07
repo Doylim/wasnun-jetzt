@@ -2,10 +2,10 @@
 
 import {
   Shield,
-  BarChart3,
+  ChartColumn,
   Megaphone,
   RotateCcw,
-  CheckCircle2,
+  CircleCheck,
   Clock,
 } from "lucide-react";
 import { useConsent } from "@/lib/consent";
@@ -57,7 +57,7 @@ export function CookieSettingsButton({ variant = "default" }: Props) {
             }`}
           >
             {decided ? (
-              <CheckCircle2 className="h-4 w-4" />
+              <CircleCheck className="h-4 w-4" />
             ) : (
               <Clock className="h-4 w-4" />
             )}
@@ -94,7 +94,7 @@ export function CookieSettingsButton({ variant = "default" }: Props) {
           locked
         />
         <CategoryRowDS
-          icon={<BarChart3 className="h-4 w-4" />}
+          icon={<ChartColumn className="h-4 w-4" />}
           title="Analyse"
           description="Anonyme Reichweitenmessung. Keine personenbezogenen Profile."
           checked={categories.analytics}
