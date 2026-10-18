@@ -179,3 +179,7 @@ respektieren.
   und `scroll-behavior: smooth`
 
 ---
+
+## Schreibregeln: die häufigste Falle
+
+**Nachbar-Code ist keine Vorlage.** Gewachsene Admin-Bereiche sind historisch voll von `Kaempfer`, `Flaeche`, `zurueck`, `oeffnen`. Wer sich beim Anlegen neuer Dateien am umliegenden Muster orientiert, übernimmt das ASCII mit. In jeder neuen Datei ab der ersten Zeile Umlaute tippen, egal wie der Code daneben aussieht. Ebenfalls sichtbar und regelmäßig vergessen: `aria-label`, `title`, Audit-Log-Notizen und Generator-Skripte, die Mail- oder HTML-Bodies erzeugen.
